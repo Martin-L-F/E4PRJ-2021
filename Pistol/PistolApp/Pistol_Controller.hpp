@@ -22,7 +22,10 @@ private:
     void startShot()
     {
         std::cout << "[CTLR][INFO] Fire" << std::endl;
-        magasin.decrementMag();
+        bool res = magasin.decrementMag();
+        //Reset timer
+        //Fire laser
+        //Play sound
     }
 
     void endShot()
@@ -33,6 +36,7 @@ private:
     void magSwitched()
     {
         std::cout << "[CTLR][INFO] Magasin switched" << std::endl;
+        //Play sound
     }
 
     Trigger_IF trigger;
