@@ -6,23 +6,28 @@
 
 #include "Trigger_IF.hpp"
 #include "Magasin_IF.hpp"
+#include "Powersave_timeout_IF.hpp"
 
 class Pistol_Controller
 {
 public:
     Pistol_Controller()
     {
-        trigger.addFireCallback((std::function<void()>)std::bind(&Pistol_Controller::startShot, this));
-        trigger.addEndOfFireCallback((std::function<void()>)std::bind(&Pistol_Controller::endShot, this));
-        magasin.addMagSwitchCallback((std::function<void()>)std::bind(&Pistol_Controller::magSwitched, this));
-        magasin.setMag(1);
+        _trigger.addFireCallback((std::function<void()>)std::bind(&Pistol_Controller::startShot, this));
+        _trigger.addEndOfFireCallback((std::function<void()>)std::bind(&Pistol_Controller::endShot, this));
+
+        _magasin.addMagSwitchCallback((std::function<void()>)std::bind(&Pistol_Controller::magSwitched, this));
+        _magasin.setMag(1);
+
+        _powersave_timeout.addCallback((std::function<void()>)std::bind(&Pistol_Controller::goToPowersave, this));
+        _powersave_timeout.setDelay(50000);
     }
 
 private:
     void startShot()
     {
         std::cout << "[CTLR][INFO] Fire" << std::endl;
-        bool res = magasin.decrementMag();
+        bool res = _magasin.decrementMag();
         //Reset timer
         //Fire laser
         //Play sound
@@ -39,6 +44,15 @@ private:
         //Play sound
     }
 
-    Trigger_IF trigger;
-    Magasin_IF magasin;
+    void goToPowersave()
+    {
+        std::cout << "[CTLR][INFO] Initiating powersave" << std::endl;
+        // Disable Wi-Fi and power down
+
+        _powersave_timeout.reset();
+    }
+
+    Trigger_IF _trigger;
+    Magasin_IF _magasin;
+    Powersave_timeout_IF _powersave_timeout;
 };
