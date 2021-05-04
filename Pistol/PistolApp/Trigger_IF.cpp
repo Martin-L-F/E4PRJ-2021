@@ -4,12 +4,12 @@ Trigger_IF::Trigger_IF()
 {
     wiringPiSetupGpio();
     pullUpDnControl(21, PUD_DOWN);
-    interuptThread = std::thread(&Trigger_IF::trigger, this);
+    _interuptThread = std::thread(&Trigger_IF::trigger, this);
 }
 
 Trigger_IF::~Trigger_IF()
 {
-    interuptThread.join();
+    _interuptThread.join();
 }
 
 inline void Trigger_IF::trigger(void)
@@ -31,9 +31,9 @@ inline void Trigger_IF::trigger(void)
 
             do
             {
-                if (fireCallback != nullptr)
+                if (_fireCallback != nullptr)
                 {
-                    fireCallback();
+                    _fireCallback();
                 }
                 else
                 {
@@ -42,9 +42,9 @@ inline void Trigger_IF::trigger(void)
 
                 std::this_thread::sleep_for(std::chrono::milliseconds(500));
 
-                if (endOfFireCallback != nullptr)
+                if (_endOfFireCallback != nullptr)
                 {
-                    endOfFireCallback();
+                    _endOfFireCallback();
                 }
                 else
                 {

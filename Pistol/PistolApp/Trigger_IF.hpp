@@ -12,26 +12,26 @@ public:
     ~Trigger_IF();
     void addFireCallback(std::function<void()> callback)
     {
-        if (fireCallback != nullptr)
+        if (_fireCallback != nullptr)
         {
             std::cout << "[Trigger][WARN] Overriding callback for: Fire" << std::endl;
         }
-        fireCallback = callback;
+        _fireCallback = callback;
     }
 
     void addEndOfFireCallback(std::function<void()> callback)
     {
-        if (endOfFireCallback != nullptr)
+        if (_endOfFireCallback != nullptr)
         {
             std::cout << "[Trigger][WARN] Overriding callback for: EndOfFire" << std::endl;
         }
-        endOfFireCallback = callback;
+        _endOfFireCallback = callback;
     }
 
 private:
     void trigger(void);
 
-    std::thread interuptThread;
-    std::function<void()> fireCallback = nullptr;
-    std::function<void()> endOfFireCallback = nullptr;
+    std::thread _interuptThread;
+    std::function<void()> _fireCallback = nullptr;
+    std::function<void()> _endOfFireCallback = nullptr;
 };

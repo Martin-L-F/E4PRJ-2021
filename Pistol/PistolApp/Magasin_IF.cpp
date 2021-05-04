@@ -2,19 +2,19 @@
 
 Magasin_IF::Magasin_IF()
 {
-    interuptThread = std::thread(&Magasin_IF::trigger, this);
+    _interuptThread = std::thread(&Magasin_IF::trigger, this);
 }
 
 Magasin_IF::~Magasin_IF()
 {
-    interuptThread.join();
+    _interuptThread.join();
 }
 
 bool Magasin_IF::decrementMag()
 {
-    if (ammoAmount > 0)
+    if (_ammoAmount > 0)
     {
-        ammoAmount--;
+        _ammoAmount--;
         return true;
     }
     else
@@ -29,20 +29,20 @@ void Magasin_IF::setMag(int difficulty)
     switch (difficulty)
     {
     case 1:
-        magSize = 13;
+        _magSize = 13;
         break;
     case 2:
-        magSize = 9;
+        _magSize = 9;
         break;
     case 3:
-        magSize = 5;
+        _magSize = 5;
         break;
     default:
         std::cout << "[Magasin][WARN] Unexpected input for setMag. Input was: '" << difficulty << "'" << std::endl;
         return;
     }
     fillMag();
-    std::cout << "[Magasin][INFO] Magsize set to " << magSize << std::endl;
+    std::cout << "[Magasin][INFO] Magsize set to " << _magSize << std::endl;
 }
 
 void Magasin_IF::trigger(void)
@@ -62,9 +62,9 @@ void Magasin_IF::trigger(void)
                 triggerInterupt.read(memblock, 1);
             }
             fillMag();
-            if (magSwitch != nullptr)
+            if (_magSwitch != nullptr)
             {
-                magSwitch();
+                _magSwitch();
             }
             else
             {
@@ -78,5 +78,5 @@ void Magasin_IF::trigger(void)
 
 void Magasin_IF::fillMag()
 {
-    ammoAmount = magSize;
+    _ammoAmount = _magSize;
 }

@@ -13,11 +13,11 @@ public:
 
     void addMagSwitchCallback(std::function<void()> callback)
     {
-        if (magSwitch != nullptr)
+        if (_magSwitch != nullptr)
         {
             std::cout << "[Magasin][WARN] Overriding callback for: MagSwitch" << std::endl;
         }
-        magSwitch = callback;
+        _magSwitch = callback;
     }
 
     bool decrementMag();
@@ -29,8 +29,8 @@ private:
 
     void fillMag();
 
-    std::thread interuptThread;
-    std::function<void()> magSwitch = nullptr;
-    int ammoAmount = 0;
-    int magSize = 0;
+    std::thread _interuptThread;
+    std::function<void()> _magSwitch = nullptr;
+    int _ammoAmount = 0;
+    int _magSize = 0;
 };
