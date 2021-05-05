@@ -6,6 +6,8 @@
 #include <linux/device.h>
 #include <linux/uaccess.h>
 #include <linux/slab.h>
+#include <linux/delay.h>
+#include <linux/kthread.h>
 
 
 /******* MACRO SETTINGS *****************/
@@ -13,6 +15,7 @@
 #define NBR_MINORS 1
 
 #define GPIO_PIN 17
+#define RUMBLE_SLEEP_MS 1000
 
 
 
@@ -30,11 +33,19 @@ struct dev_data dev_data;
 
 /******* FILE OPERATIONS ****************/
 
+int rumble_motor_stop_rumble_thread(void *pv)
+{
+	msleep(RUMBLE_SLEEP_MS);
+	gpio_set_value(GPIO_PIN, 0);
+	return 0;
+}
+
 static int rumble_motor_write(struct file *file, const char __user *buff,
 		size_t len, loff_t* offset)
 {
 	int err;
 	char msg[2];
+	static struct task_struct *stop_thread;
 
 	/* Get new value from userspace */
 	err = copy_from_user(msg, buff, len);
@@ -45,9 +56,15 @@ static int rumble_motor_write(struct file *file, const char __user *buff,
 	}
 
 	if (msg[0] == '1')
+	{
+		/* Set GPIO high */
 		gpio_set_value(GPIO_PIN, 1);
-	else if (msg[0] == '0')
-		gpio_set_value(GPIO_PIN, 0);
+
+		/* Create stop thread */
+		stop_thread = kthread_run(rumble_motor_stop_rumble_thread, NULL, "RUMBLE stop thread");
+		if (!stop_thread)
+			printk(KERN_ALERT "RUMBLE: Couldn't create stop rumble thread.");
+	}
 
 	return len;
 }
