@@ -2,7 +2,7 @@ SOURCES=main.cpp Trigger_IF.cpp Magasin_IF.cpp Powersave_timeout_IF.cpp
 OBJECTS=$(addprefix  $(BUILD_DIR), $(SOURCES:.cpp=.o))
 DEPS=$(SOURCES:.cpp=.d)
 EXE=PistolApp
-CXXFLAGS=-I. -pthread -lwiringPi
+CXXFLAGS=-I. -lwiringPi
 
 # Making for host
 # > make ARCH=host

@@ -2,7 +2,7 @@ SOURCES=main.cpp
 OBJECTS=$(addprefix  $(BUILD_DIR), $(SOURCES:.cpp=.o))
 DEPS=$(SOURCES:.cpp=.d)
 EXE=ControlUnitApp
-CXXFLAGS=-I. -pthread -lwiringPi
+CXXFLAGS=-I.
 
 # Making for host
 # > make ARCH=host
