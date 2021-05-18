@@ -1,0 +1,779 @@
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\cc5rHkA2.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"rotary_encoder.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.isr_rotary_1_vec,"ax",%progbits
+  20              		.align	2
+  21              		.global	isr_rotary_1_vec
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	isr_rotary_1_vec, %function
+  25              	isr_rotary_1_vec:
+  26              	.LFB63:
+  27              		.file 1 "rotary_encoder.c"
+   1:rotary_encoder.c **** /* ========================================
+   2:rotary_encoder.c ****  *
+   3:rotary_encoder.c ****  * Copyright YOUR COMPANY, THE YEAR
+   4:rotary_encoder.c ****  * All Rights Reserved
+   5:rotary_encoder.c ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:rotary_encoder.c ****  *
+   7:rotary_encoder.c ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:rotary_encoder.c ****  * WHICH IS THE PROPERTY OF your company.
+   9:rotary_encoder.c ****  *
+  10:rotary_encoder.c ****  * ========================================
+  11:rotary_encoder.c **** */
+  12:rotary_encoder.c **** 
+  13:rotary_encoder.c **** #include "project.h"
+  14:rotary_encoder.c **** #include "rotary_encoder.h"
+  15:rotary_encoder.c **** 
+  16:rotary_encoder.c **** unsigned int _pos = 0;
+  17:rotary_encoder.c **** 
+  18:rotary_encoder.c **** CY_ISR(isr_rotary_1_vec)
+  19:rotary_encoder.c **** {
+  28              		.loc 1 19 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+  20:rotary_encoder.c ****     _pos++;
+  33              		.loc 1 20 0
+  34 0000 024A     		ldr	r2, .L2
+  35 0002 1368     		ldr	r3, [r2]
+  36 0004 0133     		adds	r3, r3, #1
+  37 0006 1360     		str	r3, [r2]
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\cc5rHkA2.s 			page 2
+
+
+  38 0008 7047     		bx	lr
+  39              	.L3:
+  40 000a 00BF     		.align	2
+  41              	.L2:
+  42 000c 00000000 		.word	.LANCHOR0
+  43              		.cfi_endproc
+  44              	.LFE63:
+  45              		.size	isr_rotary_1_vec, .-isr_rotary_1_vec
+  46              		.section	.text.isr_rotary_2_vec,"ax",%progbits
+  47              		.align	2
+  48              		.global	isr_rotary_2_vec
+  49              		.thumb
+  50              		.thumb_func
+  51              		.type	isr_rotary_2_vec, %function
+  52              	isr_rotary_2_vec:
+  53              	.LFB64:
+  21:rotary_encoder.c **** }
+  22:rotary_encoder.c **** 
+  23:rotary_encoder.c **** CY_ISR(isr_rotary_2_vec)
+  24:rotary_encoder.c **** {
+  54              		.loc 1 24 0
+  55              		.cfi_startproc
+  56              		@ args = 0, pretend = 0, frame = 0
+  57              		@ frame_needed = 0, uses_anonymous_args = 0
+  58              		@ link register save eliminated.
+  25:rotary_encoder.c ****     _pos--;
+  59              		.loc 1 25 0
+  60 0000 024A     		ldr	r2, .L5
+  61 0002 1368     		ldr	r3, [r2]
+  62 0004 013B     		subs	r3, r3, #1
+  63 0006 1360     		str	r3, [r2]
+  64 0008 7047     		bx	lr
+  65              	.L6:
+  66 000a 00BF     		.align	2
+  67              	.L5:
+  68 000c 00000000 		.word	.LANCHOR0
+  69              		.cfi_endproc
+  70              	.LFE64:
+  71              		.size	isr_rotary_2_vec, .-isr_rotary_2_vec
+  72              		.section	.text.InitRotary,"ax",%progbits
+  73              		.align	2
+  74              		.global	InitRotary
+  75              		.thumb
+  76              		.thumb_func
+  77              		.type	InitRotary, %function
+  78              	InitRotary:
+  79              	.LFB65:
+  26:rotary_encoder.c **** }
+  27:rotary_encoder.c **** 
+  28:rotary_encoder.c **** void InitRotary()
+  29:rotary_encoder.c **** {
+  80              		.loc 1 29 0
+  81              		.cfi_startproc
+  82              		@ args = 0, pretend = 0, frame = 0
+  83              		@ frame_needed = 0, uses_anonymous_args = 0
+  84 0000 08B5     		push	{r3, lr}
+  85              		.cfi_def_cfa_offset 8
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\cc5rHkA2.s 			page 3
+
+
+  86              		.cfi_offset 3, -8
+  87              		.cfi_offset 14, -4
+  30:rotary_encoder.c ****     isr_rotary_1_StartEx(isr_rotary_1_vec);
+  88              		.loc 1 30 0
+  89 0002 0348     		ldr	r0, .L9
+  90 0004 FFF7FEFF 		bl	isr_rotary_1_StartEx
+  91              	.LVL0:
+  31:rotary_encoder.c ****     isr_rotary_2_StartEx(isr_rotary_2_vec);
+  92              		.loc 1 31 0
+  93 0008 0248     		ldr	r0, .L9+4
+  94 000a FFF7FEFF 		bl	isr_rotary_2_StartEx
+  95              	.LVL1:
+  96 000e 08BD     		pop	{r3, pc}
+  97              	.L10:
+  98              		.align	2
+  99              	.L9:
+ 100 0010 00000000 		.word	isr_rotary_1_vec
+ 101 0014 00000000 		.word	isr_rotary_2_vec
+ 102              		.cfi_endproc
+ 103              	.LFE65:
+ 104              		.size	InitRotary, .-InitRotary
+ 105              		.section	.text.GetRotaryPos,"ax",%progbits
+ 106              		.align	2
+ 107              		.global	GetRotaryPos
+ 108              		.thumb
+ 109              		.thumb_func
+ 110              		.type	GetRotaryPos, %function
+ 111              	GetRotaryPos:
+ 112              	.LFB66:
+  32:rotary_encoder.c **** }
+  33:rotary_encoder.c **** 
+  34:rotary_encoder.c **** unsigned int GetRotaryPos()
+  35:rotary_encoder.c **** {
+ 113              		.loc 1 35 0
+ 114              		.cfi_startproc
+ 115              		@ args = 0, pretend = 0, frame = 0
+ 116              		@ frame_needed = 0, uses_anonymous_args = 0
+ 117              		@ link register save eliminated.
+  36:rotary_encoder.c ****     return _pos;
+  37:rotary_encoder.c **** }
+ 118              		.loc 1 37 0
+ 119 0000 014B     		ldr	r3, .L12
+ 120 0002 1868     		ldr	r0, [r3]
+ 121 0004 7047     		bx	lr
+ 122              	.L13:
+ 123 0006 00BF     		.align	2
+ 124              	.L12:
+ 125 0008 00000000 		.word	.LANCHOR0
+ 126              		.cfi_endproc
+ 127              	.LFE66:
+ 128              		.size	GetRotaryPos, .-GetRotaryPos
+ 129              		.global	_pos
+ 130              		.bss
+ 131              		.align	2
+ 132              		.set	.LANCHOR0,. + 0
+ 133              		.type	_pos, %object
+ 134              		.size	_pos, 4
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\cc5rHkA2.s 			page 4
+
+
+ 135              	_pos:
+ 136 0000 00000000 		.space	4
+ 137              		.text
+ 138              	.Letext0:
+ 139              		.file 2 "d:\\programs\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.1\\arm-none
+ 140              		.file 3 "d:\\programs\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.1\\arm-none
+ 141              		.file 4 "Generated_Source\\PSoC5/core_cm3.h"
+ 142              		.file 5 "Generated_Source\\PSoC5/isr_rotary_1.h"
+ 143              		.file 6 "Generated_Source\\PSoC5/isr_rotary_2.h"
+ 144              		.section	.debug_info,"",%progbits
+ 145              	.Ldebug_info0:
+ 146 0000 50010000 		.4byte	0x150
+ 147 0004 0400     		.2byte	0x4
+ 148 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 149 000a 04       		.byte	0x4
+ 150 000b 01       		.uleb128 0x1
+ 151 000c 43000000 		.4byte	.LASF23
+ 152 0010 0C       		.byte	0xc
+ 153 0011 FE010000 		.4byte	.LASF24
+ 154 0015 6A010000 		.4byte	.LASF25
+ 155 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 156 001d 00000000 		.4byte	0
+ 157 0021 00000000 		.4byte	.Ldebug_line0
+ 158 0025 02       		.uleb128 0x2
+ 159 0026 01       		.byte	0x1
+ 160 0027 06       		.byte	0x6
+ 161 0028 DC010000 		.4byte	.LASF0
+ 162 002c 02       		.uleb128 0x2
+ 163 002d 01       		.byte	0x1
+ 164 002e 08       		.byte	0x8
+ 165 002f 1D010000 		.4byte	.LASF1
+ 166 0033 02       		.uleb128 0x2
+ 167 0034 02       		.byte	0x2
+ 168 0035 05       		.byte	0x5
+ 169 0036 15020000 		.4byte	.LASF2
+ 170 003a 02       		.uleb128 0x2
+ 171 003b 02       		.byte	0x2
+ 172 003c 07       		.byte	0x7
+ 173 003d 0E000000 		.4byte	.LASF3
+ 174 0041 03       		.uleb128 0x3
+ 175 0042 F4010000 		.4byte	.LASF9
+ 176 0046 02       		.byte	0x2
+ 177 0047 3F       		.byte	0x3f
+ 178 0048 4C000000 		.4byte	0x4c
+ 179 004c 02       		.uleb128 0x2
+ 180 004d 04       		.byte	0x4
+ 181 004e 05       		.byte	0x5
+ 182 004f 41010000 		.4byte	.LASF4
+ 183 0053 02       		.uleb128 0x2
+ 184 0054 04       		.byte	0x4
+ 185 0055 07       		.byte	0x7
+ 186 0056 D1000000 		.4byte	.LASF5
+ 187 005a 02       		.uleb128 0x2
+ 188 005b 08       		.byte	0x8
+ 189 005c 05       		.byte	0x5
+ 190 005d 00000000 		.4byte	.LASF6
+ 191 0061 02       		.uleb128 0x2
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\cc5rHkA2.s 			page 5
+
+
+ 192 0062 08       		.byte	0x8
+ 193 0063 07       		.byte	0x7
+ 194 0064 F4000000 		.4byte	.LASF7
+ 195 0068 04       		.uleb128 0x4
+ 196 0069 04       		.byte	0x4
+ 197 006a 05       		.byte	0x5
+ 198 006b 696E7400 		.ascii	"int\000"
+ 199 006f 02       		.uleb128 0x2
+ 200 0070 04       		.byte	0x4
+ 201 0071 07       		.byte	0x7
+ 202 0072 21000000 		.4byte	.LASF8
+ 203 0076 03       		.uleb128 0x3
+ 204 0077 1F020000 		.4byte	.LASF10
+ 205 007b 03       		.byte	0x3
+ 206 007c 2C       		.byte	0x2c
+ 207 007d 41000000 		.4byte	0x41
+ 208 0081 02       		.uleb128 0x2
+ 209 0082 04       		.byte	0x4
+ 210 0083 04       		.byte	0x4
+ 211 0084 0F020000 		.4byte	.LASF11
+ 212 0088 02       		.uleb128 0x2
+ 213 0089 08       		.byte	0x8
+ 214 008a 04       		.byte	0x4
+ 215 008b C8010000 		.4byte	.LASF12
+ 216 008f 02       		.uleb128 0x2
+ 217 0090 01       		.byte	0x1
+ 218 0091 08       		.byte	0x8
+ 219 0092 2B010000 		.4byte	.LASF13
+ 220 0096 02       		.uleb128 0x2
+ 221 0097 08       		.byte	0x8
+ 222 0098 04       		.byte	0x4
+ 223 0099 E8010000 		.4byte	.LASF14
+ 224 009d 02       		.uleb128 0x2
+ 225 009e 04       		.byte	0x4
+ 226 009f 07       		.byte	0x7
+ 227 00a0 27020000 		.4byte	.LASF15
+ 228 00a4 05       		.uleb128 0x5
+ 229 00a5 E3000000 		.4byte	.LASF16
+ 230 00a9 01       		.byte	0x1
+ 231 00aa 12       		.byte	0x12
+ 232 00ab 00000000 		.4byte	.LFB63
+ 233 00af 10000000 		.4byte	.LFE63-.LFB63
+ 234 00b3 01       		.uleb128 0x1
+ 235 00b4 9C       		.byte	0x9c
+ 236 00b5 05       		.uleb128 0x5
+ 237 00b6 30010000 		.4byte	.LASF17
+ 238 00ba 01       		.byte	0x1
+ 239 00bb 17       		.byte	0x17
+ 240 00bc 00000000 		.4byte	.LFB64
+ 241 00c0 10000000 		.4byte	.LFE64-.LFB64
+ 242 00c4 01       		.uleb128 0x1
+ 243 00c5 9C       		.byte	0x9c
+ 244 00c6 06       		.uleb128 0x6
+ 245 00c7 5F010000 		.4byte	.LASF26
+ 246 00cb 01       		.byte	0x1
+ 247 00cc 1C       		.byte	0x1c
+ 248 00cd 00000000 		.4byte	.LFB65
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\cc5rHkA2.s 			page 6
+
+
+ 249 00d1 18000000 		.4byte	.LFE65-.LFB65
+ 250 00d5 01       		.uleb128 0x1
+ 251 00d6 9C       		.byte	0x9c
+ 252 00d7 06010000 		.4byte	0x106
+ 253 00db 07       		.uleb128 0x7
+ 254 00dc 08000000 		.4byte	.LVL0
+ 255 00e0 3D010000 		.4byte	0x13d
+ 256 00e4 F2000000 		.4byte	0xf2
+ 257 00e8 08       		.uleb128 0x8
+ 258 00e9 01       		.uleb128 0x1
+ 259 00ea 50       		.byte	0x50
+ 260 00eb 05       		.uleb128 0x5
+ 261 00ec 03       		.byte	0x3
+ 262 00ed 00000000 		.4byte	isr_rotary_1_vec
+ 263 00f1 00       		.byte	0
+ 264 00f2 09       		.uleb128 0x9
+ 265 00f3 0E000000 		.4byte	.LVL1
+ 266 00f7 48010000 		.4byte	0x148
+ 267 00fb 08       		.uleb128 0x8
+ 268 00fc 01       		.uleb128 0x1
+ 269 00fd 50       		.byte	0x50
+ 270 00fe 05       		.uleb128 0x5
+ 271 00ff 03       		.byte	0x3
+ 272 0100 00000000 		.4byte	isr_rotary_2_vec
+ 273 0104 00       		.byte	0
+ 274 0105 00       		.byte	0
+ 275 0106 0A       		.uleb128 0xa
+ 276 0107 0B010000 		.4byte	.LASF18
+ 277 010b 01       		.byte	0x1
+ 278 010c 22       		.byte	0x22
+ 279 010d 6F000000 		.4byte	0x6f
+ 280 0111 00000000 		.4byte	.LFB66
+ 281 0115 0C000000 		.4byte	.LFE66-.LFB66
+ 282 0119 01       		.uleb128 0x1
+ 283 011a 9C       		.byte	0x9c
+ 284 011b 0B       		.uleb128 0xb
+ 285 011c CF010000 		.4byte	.LASF19
+ 286 0120 04       		.byte	0x4
+ 287 0121 1207     		.2byte	0x712
+ 288 0123 27010000 		.4byte	0x127
+ 289 0127 0C       		.uleb128 0xc
+ 290 0128 76000000 		.4byte	0x76
+ 291 012c 0D       		.uleb128 0xd
+ 292 012d 18010000 		.4byte	.LASF20
+ 293 0131 01       		.byte	0x1
+ 294 0132 10       		.byte	0x10
+ 295 0133 6F000000 		.4byte	0x6f
+ 296 0137 05       		.uleb128 0x5
+ 297 0138 03       		.byte	0x3
+ 298 0139 00000000 		.4byte	_pos
+ 299 013d 0E       		.uleb128 0xe
+ 300 013e 2E000000 		.4byte	.LASF21
+ 301 0142 2E000000 		.4byte	.LASF21
+ 302 0146 05       		.byte	0x5
+ 303 0147 18       		.byte	0x18
+ 304 0148 0E       		.uleb128 0xe
+ 305 0149 4A010000 		.4byte	.LASF22
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\cc5rHkA2.s 			page 7
+
+
+ 306 014d 4A010000 		.4byte	.LASF22
+ 307 0151 06       		.byte	0x6
+ 308 0152 18       		.byte	0x18
+ 309 0153 00       		.byte	0
+ 310              		.section	.debug_abbrev,"",%progbits
+ 311              	.Ldebug_abbrev0:
+ 312 0000 01       		.uleb128 0x1
+ 313 0001 11       		.uleb128 0x11
+ 314 0002 01       		.byte	0x1
+ 315 0003 25       		.uleb128 0x25
+ 316 0004 0E       		.uleb128 0xe
+ 317 0005 13       		.uleb128 0x13
+ 318 0006 0B       		.uleb128 0xb
+ 319 0007 03       		.uleb128 0x3
+ 320 0008 0E       		.uleb128 0xe
+ 321 0009 1B       		.uleb128 0x1b
+ 322 000a 0E       		.uleb128 0xe
+ 323 000b 55       		.uleb128 0x55
+ 324 000c 17       		.uleb128 0x17
+ 325 000d 11       		.uleb128 0x11
+ 326 000e 01       		.uleb128 0x1
+ 327 000f 10       		.uleb128 0x10
+ 328 0010 17       		.uleb128 0x17
+ 329 0011 00       		.byte	0
+ 330 0012 00       		.byte	0
+ 331 0013 02       		.uleb128 0x2
+ 332 0014 24       		.uleb128 0x24
+ 333 0015 00       		.byte	0
+ 334 0016 0B       		.uleb128 0xb
+ 335 0017 0B       		.uleb128 0xb
+ 336 0018 3E       		.uleb128 0x3e
+ 337 0019 0B       		.uleb128 0xb
+ 338 001a 03       		.uleb128 0x3
+ 339 001b 0E       		.uleb128 0xe
+ 340 001c 00       		.byte	0
+ 341 001d 00       		.byte	0
+ 342 001e 03       		.uleb128 0x3
+ 343 001f 16       		.uleb128 0x16
+ 344 0020 00       		.byte	0
+ 345 0021 03       		.uleb128 0x3
+ 346 0022 0E       		.uleb128 0xe
+ 347 0023 3A       		.uleb128 0x3a
+ 348 0024 0B       		.uleb128 0xb
+ 349 0025 3B       		.uleb128 0x3b
+ 350 0026 0B       		.uleb128 0xb
+ 351 0027 49       		.uleb128 0x49
+ 352 0028 13       		.uleb128 0x13
+ 353 0029 00       		.byte	0
+ 354 002a 00       		.byte	0
+ 355 002b 04       		.uleb128 0x4
+ 356 002c 24       		.uleb128 0x24
+ 357 002d 00       		.byte	0
+ 358 002e 0B       		.uleb128 0xb
+ 359 002f 0B       		.uleb128 0xb
+ 360 0030 3E       		.uleb128 0x3e
+ 361 0031 0B       		.uleb128 0xb
+ 362 0032 03       		.uleb128 0x3
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\cc5rHkA2.s 			page 8
+
+
+ 363 0033 08       		.uleb128 0x8
+ 364 0034 00       		.byte	0
+ 365 0035 00       		.byte	0
+ 366 0036 05       		.uleb128 0x5
+ 367 0037 2E       		.uleb128 0x2e
+ 368 0038 00       		.byte	0
+ 369 0039 3F       		.uleb128 0x3f
+ 370 003a 19       		.uleb128 0x19
+ 371 003b 03       		.uleb128 0x3
+ 372 003c 0E       		.uleb128 0xe
+ 373 003d 3A       		.uleb128 0x3a
+ 374 003e 0B       		.uleb128 0xb
+ 375 003f 3B       		.uleb128 0x3b
+ 376 0040 0B       		.uleb128 0xb
+ 377 0041 27       		.uleb128 0x27
+ 378 0042 19       		.uleb128 0x19
+ 379 0043 11       		.uleb128 0x11
+ 380 0044 01       		.uleb128 0x1
+ 381 0045 12       		.uleb128 0x12
+ 382 0046 06       		.uleb128 0x6
+ 383 0047 40       		.uleb128 0x40
+ 384 0048 18       		.uleb128 0x18
+ 385 0049 9742     		.uleb128 0x2117
+ 386 004b 19       		.uleb128 0x19
+ 387 004c 00       		.byte	0
+ 388 004d 00       		.byte	0
+ 389 004e 06       		.uleb128 0x6
+ 390 004f 2E       		.uleb128 0x2e
+ 391 0050 01       		.byte	0x1
+ 392 0051 3F       		.uleb128 0x3f
+ 393 0052 19       		.uleb128 0x19
+ 394 0053 03       		.uleb128 0x3
+ 395 0054 0E       		.uleb128 0xe
+ 396 0055 3A       		.uleb128 0x3a
+ 397 0056 0B       		.uleb128 0xb
+ 398 0057 3B       		.uleb128 0x3b
+ 399 0058 0B       		.uleb128 0xb
+ 400 0059 11       		.uleb128 0x11
+ 401 005a 01       		.uleb128 0x1
+ 402 005b 12       		.uleb128 0x12
+ 403 005c 06       		.uleb128 0x6
+ 404 005d 40       		.uleb128 0x40
+ 405 005e 18       		.uleb128 0x18
+ 406 005f 9742     		.uleb128 0x2117
+ 407 0061 19       		.uleb128 0x19
+ 408 0062 01       		.uleb128 0x1
+ 409 0063 13       		.uleb128 0x13
+ 410 0064 00       		.byte	0
+ 411 0065 00       		.byte	0
+ 412 0066 07       		.uleb128 0x7
+ 413 0067 898201   		.uleb128 0x4109
+ 414 006a 01       		.byte	0x1
+ 415 006b 11       		.uleb128 0x11
+ 416 006c 01       		.uleb128 0x1
+ 417 006d 31       		.uleb128 0x31
+ 418 006e 13       		.uleb128 0x13
+ 419 006f 01       		.uleb128 0x1
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\cc5rHkA2.s 			page 9
+
+
+ 420 0070 13       		.uleb128 0x13
+ 421 0071 00       		.byte	0
+ 422 0072 00       		.byte	0
+ 423 0073 08       		.uleb128 0x8
+ 424 0074 8A8201   		.uleb128 0x410a
+ 425 0077 00       		.byte	0
+ 426 0078 02       		.uleb128 0x2
+ 427 0079 18       		.uleb128 0x18
+ 428 007a 9142     		.uleb128 0x2111
+ 429 007c 18       		.uleb128 0x18
+ 430 007d 00       		.byte	0
+ 431 007e 00       		.byte	0
+ 432 007f 09       		.uleb128 0x9
+ 433 0080 898201   		.uleb128 0x4109
+ 434 0083 01       		.byte	0x1
+ 435 0084 11       		.uleb128 0x11
+ 436 0085 01       		.uleb128 0x1
+ 437 0086 31       		.uleb128 0x31
+ 438 0087 13       		.uleb128 0x13
+ 439 0088 00       		.byte	0
+ 440 0089 00       		.byte	0
+ 441 008a 0A       		.uleb128 0xa
+ 442 008b 2E       		.uleb128 0x2e
+ 443 008c 00       		.byte	0
+ 444 008d 3F       		.uleb128 0x3f
+ 445 008e 19       		.uleb128 0x19
+ 446 008f 03       		.uleb128 0x3
+ 447 0090 0E       		.uleb128 0xe
+ 448 0091 3A       		.uleb128 0x3a
+ 449 0092 0B       		.uleb128 0xb
+ 450 0093 3B       		.uleb128 0x3b
+ 451 0094 0B       		.uleb128 0xb
+ 452 0095 49       		.uleb128 0x49
+ 453 0096 13       		.uleb128 0x13
+ 454 0097 11       		.uleb128 0x11
+ 455 0098 01       		.uleb128 0x1
+ 456 0099 12       		.uleb128 0x12
+ 457 009a 06       		.uleb128 0x6
+ 458 009b 40       		.uleb128 0x40
+ 459 009c 18       		.uleb128 0x18
+ 460 009d 9742     		.uleb128 0x2117
+ 461 009f 19       		.uleb128 0x19
+ 462 00a0 00       		.byte	0
+ 463 00a1 00       		.byte	0
+ 464 00a2 0B       		.uleb128 0xb
+ 465 00a3 34       		.uleb128 0x34
+ 466 00a4 00       		.byte	0
+ 467 00a5 03       		.uleb128 0x3
+ 468 00a6 0E       		.uleb128 0xe
+ 469 00a7 3A       		.uleb128 0x3a
+ 470 00a8 0B       		.uleb128 0xb
+ 471 00a9 3B       		.uleb128 0x3b
+ 472 00aa 05       		.uleb128 0x5
+ 473 00ab 49       		.uleb128 0x49
+ 474 00ac 13       		.uleb128 0x13
+ 475 00ad 3F       		.uleb128 0x3f
+ 476 00ae 19       		.uleb128 0x19
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\cc5rHkA2.s 			page 10
+
+
+ 477 00af 3C       		.uleb128 0x3c
+ 478 00b0 19       		.uleb128 0x19
+ 479 00b1 00       		.byte	0
+ 480 00b2 00       		.byte	0
+ 481 00b3 0C       		.uleb128 0xc
+ 482 00b4 35       		.uleb128 0x35
+ 483 00b5 00       		.byte	0
+ 484 00b6 49       		.uleb128 0x49
+ 485 00b7 13       		.uleb128 0x13
+ 486 00b8 00       		.byte	0
+ 487 00b9 00       		.byte	0
+ 488 00ba 0D       		.uleb128 0xd
+ 489 00bb 34       		.uleb128 0x34
+ 490 00bc 00       		.byte	0
+ 491 00bd 03       		.uleb128 0x3
+ 492 00be 0E       		.uleb128 0xe
+ 493 00bf 3A       		.uleb128 0x3a
+ 494 00c0 0B       		.uleb128 0xb
+ 495 00c1 3B       		.uleb128 0x3b
+ 496 00c2 0B       		.uleb128 0xb
+ 497 00c3 49       		.uleb128 0x49
+ 498 00c4 13       		.uleb128 0x13
+ 499 00c5 3F       		.uleb128 0x3f
+ 500 00c6 19       		.uleb128 0x19
+ 501 00c7 02       		.uleb128 0x2
+ 502 00c8 18       		.uleb128 0x18
+ 503 00c9 00       		.byte	0
+ 504 00ca 00       		.byte	0
+ 505 00cb 0E       		.uleb128 0xe
+ 506 00cc 2E       		.uleb128 0x2e
+ 507 00cd 00       		.byte	0
+ 508 00ce 3F       		.uleb128 0x3f
+ 509 00cf 19       		.uleb128 0x19
+ 510 00d0 3C       		.uleb128 0x3c
+ 511 00d1 19       		.uleb128 0x19
+ 512 00d2 6E       		.uleb128 0x6e
+ 513 00d3 0E       		.uleb128 0xe
+ 514 00d4 03       		.uleb128 0x3
+ 515 00d5 0E       		.uleb128 0xe
+ 516 00d6 3A       		.uleb128 0x3a
+ 517 00d7 0B       		.uleb128 0xb
+ 518 00d8 3B       		.uleb128 0x3b
+ 519 00d9 0B       		.uleb128 0xb
+ 520 00da 00       		.byte	0
+ 521 00db 00       		.byte	0
+ 522 00dc 00       		.byte	0
+ 523              		.section	.debug_aranges,"",%progbits
+ 524 0000 34000000 		.4byte	0x34
+ 525 0004 0200     		.2byte	0x2
+ 526 0006 00000000 		.4byte	.Ldebug_info0
+ 527 000a 04       		.byte	0x4
+ 528 000b 00       		.byte	0
+ 529 000c 0000     		.2byte	0
+ 530 000e 0000     		.2byte	0
+ 531 0010 00000000 		.4byte	.LFB63
+ 532 0014 10000000 		.4byte	.LFE63-.LFB63
+ 533 0018 00000000 		.4byte	.LFB64
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\cc5rHkA2.s 			page 11
+
+
+ 534 001c 10000000 		.4byte	.LFE64-.LFB64
+ 535 0020 00000000 		.4byte	.LFB65
+ 536 0024 18000000 		.4byte	.LFE65-.LFB65
+ 537 0028 00000000 		.4byte	.LFB66
+ 538 002c 0C000000 		.4byte	.LFE66-.LFB66
+ 539 0030 00000000 		.4byte	0
+ 540 0034 00000000 		.4byte	0
+ 541              		.section	.debug_ranges,"",%progbits
+ 542              	.Ldebug_ranges0:
+ 543 0000 00000000 		.4byte	.LFB63
+ 544 0004 10000000 		.4byte	.LFE63
+ 545 0008 00000000 		.4byte	.LFB64
+ 546 000c 10000000 		.4byte	.LFE64
+ 547 0010 00000000 		.4byte	.LFB65
+ 548 0014 18000000 		.4byte	.LFE65
+ 549 0018 00000000 		.4byte	.LFB66
+ 550 001c 0C000000 		.4byte	.LFE66
+ 551 0020 00000000 		.4byte	0
+ 552 0024 00000000 		.4byte	0
+ 553              		.section	.debug_line,"",%progbits
+ 554              	.Ldebug_line0:
+ 555 0000 9E010000 		.section	.debug_str,"MS",%progbits,1
+ 555      02005701 
+ 555      00000201 
+ 555      FB0E0D00 
+ 555      01010101 
+ 556              	.LASF6:
+ 557 0000 6C6F6E67 		.ascii	"long long int\000"
+ 557      206C6F6E 
+ 557      6720696E 
+ 557      7400
+ 558              	.LASF3:
+ 559 000e 73686F72 		.ascii	"short unsigned int\000"
+ 559      7420756E 
+ 559      7369676E 
+ 559      65642069 
+ 559      6E7400
+ 560              	.LASF8:
+ 561 0021 756E7369 		.ascii	"unsigned int\000"
+ 561      676E6564 
+ 561      20696E74 
+ 561      00
+ 562              	.LASF21:
+ 563 002e 6973725F 		.ascii	"isr_rotary_1_StartEx\000"
+ 563      726F7461 
+ 563      72795F31 
+ 563      5F537461 
+ 563      72744578 
+ 564              	.LASF23:
+ 565 0043 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 565      43313120 
+ 565      352E342E 
+ 565      31203230 
+ 565      31363036 
+ 566 0076 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 566      20726576 
+ 566      6973696F 
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\cc5rHkA2.s 			page 12
+
+
+ 566      6E203233 
+ 566      37373135 
+ 567 00a9 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 567      66756E63 
+ 567      74696F6E 
+ 567      2D736563 
+ 567      74696F6E 
+ 568              	.LASF5:
+ 569 00d1 6C6F6E67 		.ascii	"long unsigned int\000"
+ 569      20756E73 
+ 569      69676E65 
+ 569      6420696E 
+ 569      7400
+ 570              	.LASF16:
+ 571 00e3 6973725F 		.ascii	"isr_rotary_1_vec\000"
+ 571      726F7461 
+ 571      72795F31 
+ 571      5F766563 
+ 571      00
+ 572              	.LASF7:
+ 573 00f4 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 573      206C6F6E 
+ 573      6720756E 
+ 573      7369676E 
+ 573      65642069 
+ 574              	.LASF18:
+ 575 010b 47657452 		.ascii	"GetRotaryPos\000"
+ 575      6F746172 
+ 575      79506F73 
+ 575      00
+ 576              	.LASF20:
+ 577 0118 5F706F73 		.ascii	"_pos\000"
+ 577      00
+ 578              	.LASF1:
+ 579 011d 756E7369 		.ascii	"unsigned char\000"
+ 579      676E6564 
+ 579      20636861 
+ 579      7200
+ 580              	.LASF13:
+ 581 012b 63686172 		.ascii	"char\000"
+ 581      00
+ 582              	.LASF17:
+ 583 0130 6973725F 		.ascii	"isr_rotary_2_vec\000"
+ 583      726F7461 
+ 583      72795F32 
+ 583      5F766563 
+ 583      00
+ 584              	.LASF4:
+ 585 0141 6C6F6E67 		.ascii	"long int\000"
+ 585      20696E74 
+ 585      00
+ 586              	.LASF22:
+ 587 014a 6973725F 		.ascii	"isr_rotary_2_StartEx\000"
+ 587      726F7461 
+ 587      72795F32 
+ 587      5F537461 
+ 587      72744578 
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\cc5rHkA2.s 			page 13
+
+
+ 588              	.LASF26:
+ 589 015f 496E6974 		.ascii	"InitRotary\000"
+ 589      526F7461 
+ 589      727900
+ 590              	.LASF25:
+ 591 016a 443A5C55 		.ascii	"D:\\User-Folders\\Documents\\E4PRJ-2021\\Skinnesyst"
+ 591      7365722D 
+ 591      466F6C64 
+ 591      6572735C 
+ 591      446F6375 
+ 592 0199 656D5C52 		.ascii	"em\\RotaryEncoderWorkspace\\RotaryEncoder1.cydsn\000"
+ 592      6F746172 
+ 592      79456E63 
+ 592      6F646572 
+ 592      576F726B 
+ 593              	.LASF12:
+ 594 01c8 646F7562 		.ascii	"double\000"
+ 594      6C6500
+ 595              	.LASF19:
+ 596 01cf 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 596      52784275 
+ 596      66666572 
+ 596      00
+ 597              	.LASF0:
+ 598 01dc 7369676E 		.ascii	"signed char\000"
+ 598      65642063 
+ 598      68617200 
+ 599              	.LASF14:
+ 600 01e8 6C6F6E67 		.ascii	"long double\000"
+ 600      20646F75 
+ 600      626C6500 
+ 601              	.LASF9:
+ 602 01f4 5F5F696E 		.ascii	"__int32_t\000"
+ 602      7433325F 
+ 602      7400
+ 603              	.LASF24:
+ 604 01fe 726F7461 		.ascii	"rotary_encoder.c\000"
+ 604      72795F65 
+ 604      6E636F64 
+ 604      65722E63 
+ 604      00
+ 605              	.LASF11:
+ 606 020f 666C6F61 		.ascii	"float\000"
+ 606      7400
+ 607              	.LASF2:
+ 608 0215 73686F72 		.ascii	"short int\000"
+ 608      7420696E 
+ 608      7400
+ 609              	.LASF10:
+ 610 021f 696E7433 		.ascii	"int32_t\000"
+ 610      325F7400 
+ 611              	.LASF15:
+ 612 0227 73697A65 		.ascii	"sizetype\000"
+ 612      74797065 
+ 612      00
+ 613              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

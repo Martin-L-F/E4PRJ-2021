@@ -1,0 +1,7 @@
+D:\Programs\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|e308875b-17cd-479a-9d3e-45afea56ed65
+D:\User-Folders\Documents\PSoC Creator\4.4\Downloads ( 4.4).cylib\Downloads ( 4.4).cyprj|c4d0f26d-54c5-4e47-8542-c2c76dcbe44d
+D:\Programs\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|5b24429f-b69a-4211-9f62-3ee07d9802b0
+D:\Programs\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|5ddd96ec-9d3b-46f4-a037-49d5ef338a36
+D:\Programs\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|4b051c30-df7d-4a22-90c9-291b6ed6dbf9
+D:\User-Folders\Documents\E4PRJ-2021\Skinnesystem\RotaryEncoderWorkspace\RotaryEncoder1.cydsn\RotaryEncoder1.cyprj|8477fb75-e799-4437-9b56-76efecc4b9a6
+D:\User-Folders\Documents\E4PRJ-2021\Skinnesystem\RotaryEncoderWorkspace\RotaryEncoder2.cydsn\RotaryEncoder2.cyprj|020c0f03-6c0e-48f5-b240-6fbe4e31cb1d

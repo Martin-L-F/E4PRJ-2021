@@ -1,0 +1,4 @@
+Warning-1361: The design contains a combinational loop. Check the design for unintentional latches. Breaking the loop at Net_9/main_2 --> Net_9/q 
+Warning-1361: The design contains a combinational loop. Check the design for unintentional latches. Breaking the loop at Net_10/main_2 --> Net_10/q 
+I2076: Total run-time: 0.9 sec.
+

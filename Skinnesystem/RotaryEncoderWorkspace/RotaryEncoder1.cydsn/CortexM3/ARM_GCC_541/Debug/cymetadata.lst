@@ -1,0 +1,1579 @@
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccJLjNJy.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"cymetadata.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.global	cy_metadata
+  20              		.global	cy_meta_flashprotect
+  21              		.global	cy_meta_wonvl
+  22              		.global	cy_meta_custnvl
+  23              		.global	cy_meta_configecc
+  24              		.section	.cyconfigecc,"a",%progbits
+  25              		.align	2
+  26              		.type	cy_meta_configecc, %object
+  27              		.size	cy_meta_configecc, 1036
+  28              	cy_meta_configecc:
+  29 0000 03       		.byte	3
+  30 0001 65       		.byte	101
+  31 0002 00       		.byte	0
+  32 0003 40       		.byte	64
+  33 0004 02       		.byte	2
+  34 0005 05       		.byte	5
+  35 0006 01       		.byte	1
+  36 0007 40       		.byte	64
+  37 0008 54       		.byte	84
+  38 0009 06       		.byte	6
+  39 000a 01       		.byte	1
+  40 000b 40       		.byte	64
+  41 000c 33       		.byte	51
+  42 000d 07       		.byte	7
+  43 000e 01       		.byte	1
+  44 000f 40       		.byte	64
+  45 0010 3D       		.byte	61
+  46 0011 14       		.byte	20
+  47 0012 01       		.byte	1
+  48 0013 40       		.byte	64
+  49 0014 46       		.byte	70
+  50 0015 15       		.byte	21
+  51 0016 01       		.byte	1
+  52 0017 40       		.byte	64
+  53 0018 5B       		.byte	91
+  54 0019 16       		.byte	22
+  55 001a 01       		.byte	1
+  56 001b 40       		.byte	64
+  57 001c 45       		.byte	69
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccJLjNJy.s 			page 2
+
+
+  58 001d 17       		.byte	23
+  59 001e 01       		.byte	1
+  60 001f 40       		.byte	64
+  61 0020 02       		.byte	2
+  62 0021 1B       		.byte	27
+  63 0022 01       		.byte	1
+  64 0023 40       		.byte	64
+  65 0024 03       		.byte	3
+  66 0025 40       		.byte	64
+  67 0026 01       		.byte	1
+  68 0027 40       		.byte	64
+  69 0028 05       		.byte	5
+  70 0029 41       		.byte	65
+  71 002a 01       		.byte	1
+  72 002b 40       		.byte	64
+  73 002c 05       		.byte	5
+  74 002d 42       		.byte	66
+  75 002e 01       		.byte	1
+  76 002f 40       		.byte	64
+  77 0030 06       		.byte	6
+  78 0031 43       		.byte	67
+  79 0032 01       		.byte	1
+  80 0033 40       		.byte	64
+  81 0034 01       		.byte	1
+  82 0035 48       		.byte	72
+  83 0036 01       		.byte	1
+  84 0037 40       		.byte	64
+  85 0038 08       		.byte	8
+  86 0039 4D       		.byte	77
+  87 003a 01       		.byte	1
+  88 003b 40       		.byte	64
+  89 003c 04       		.byte	4
+  90 003d 50       		.byte	80
+  91 003e 01       		.byte	1
+  92 003f 40       		.byte	64
+  93 0040 01       		.byte	1
+  94 0041 51       		.byte	81
+  95 0042 01       		.byte	1
+  96 0043 40       		.byte	64
+  97 0044 85       		.byte	-123
+  98 0045 72       		.byte	114
+  99 0046 86       		.byte	-122
+ 100 0047 38       		.byte	56
+ 101 0048 87       		.byte	-121
+ 102 0049 0F       		.byte	15
+ 103 004a A3       		.byte	-93
+ 104 004b 01       		.byte	1
+ 105 004c AF       		.byte	-81
+ 106 004d 01       		.byte	1
+ 107 004e 02       		.byte	2
+ 108 004f 08       		.byte	8
+ 109 0050 03       		.byte	3
+ 110 0051 0A       		.byte	10
+ 111 0052 05       		.byte	5
+ 112 0053 06       		.byte	6
+ 113 0054 07       		.byte	7
+ 114 0055 10       		.byte	16
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccJLjNJy.s 			page 3
+
+
+ 115 0056 0A       		.byte	10
+ 116 0057 03       		.byte	3
+ 117 0058 0B       		.byte	11
+ 118 0059 14       		.byte	20
+ 119 005a 0E       		.byte	14
+ 120 005b 42       		.byte	66
+ 121 005c 0F       		.byte	15
+ 122 005d 01       		.byte	1
+ 123 005e 11       		.byte	17
+ 124 005f 06       		.byte	6
+ 125 0060 12       		.byte	18
+ 126 0061 18       		.byte	24
+ 127 0062 14       		.byte	20
+ 128 0063 61       		.byte	97
+ 129 0064 18       		.byte	24
+ 130 0065 18       		.byte	24
+ 131 0066 1A       		.byte	26
+ 132 0067 04       		.byte	4
+ 133 0068 1B       		.byte	27
+ 134 0069 01       		.byte	1
+ 135 006a 1C       		.byte	28
+ 136 006b 21       		.byte	33
+ 137 006c 1F       		.byte	31
+ 138 006d 20       		.byte	32
+ 139 006e 22       		.byte	34
+ 140 006f 14       		.byte	20
+ 141 0070 26       		.byte	38
+ 142 0071 04       		.byte	4
+ 143 0072 27       		.byte	39
+ 144 0073 20       		.byte	32
+ 145 0074 29       		.byte	41
+ 146 0075 01       		.byte	1
+ 147 0076 2A       		.byte	42
+ 148 0077 0C       		.byte	12
+ 149 0078 2D       		.byte	45
+ 150 0079 01       		.byte	1
+ 151 007a 31       		.byte	49
+ 152 007b 01       		.byte	1
+ 153 007c 32       		.byte	50
+ 154 007d 1C       		.byte	28
+ 155 007e 33       		.byte	51
+ 156 007f 18       		.byte	24
+ 157 0080 34       		.byte	52
+ 158 0081 03       		.byte	3
+ 159 0082 35       		.byte	53
+ 160 0083 20       		.byte	32
+ 161 0084 36       		.byte	54
+ 162 0085 60       		.byte	96
+ 163 0086 37       		.byte	55
+ 164 0087 06       		.byte	6
+ 165 0088 39       		.byte	57
+ 166 0089 02       		.byte	2
+ 167 008a 3A       		.byte	58
+ 168 008b 08       		.byte	8
+ 169 008c 3E       		.byte	62
+ 170 008d 50       		.byte	80
+ 171 008e 3F       		.byte	63
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccJLjNJy.s 			page 4
+
+
+ 172 008f 54       		.byte	84
+ 173 0090 58       		.byte	88
+ 174 0091 04       		.byte	4
+ 175 0092 59       		.byte	89
+ 176 0093 04       		.byte	4
+ 177 0094 5F       		.byte	95
+ 178 0095 01       		.byte	1
+ 179 0096 87       		.byte	-121
+ 180 0097 03       		.byte	3
+ 181 0098 89       		.byte	-119
+ 182 0099 10       		.byte	16
+ 183 009a 8A       		.byte	-118
+ 184 009b 03       		.byte	3
+ 185 009c 8C       		.byte	-116
+ 186 009d 14       		.byte	20
+ 187 009e 8F       		.byte	-113
+ 188 009f 0C       		.byte	12
+ 189 00a0 90       		.byte	-112
+ 190 00a1 70       		.byte	112
+ 191 00a2 92       		.byte	-110
+ 192 00a3 0C       		.byte	12
+ 193 00a4 94       		.byte	-108
+ 194 00a5 6C       		.byte	108
+ 195 00a6 95       		.byte	-107
+ 196 00a7 01       		.byte	1
+ 197 00a8 96       		.byte	-106
+ 198 00a9 11       		.byte	17
+ 199 00aa 97       		.byte	-105
+ 200 00ab 0E       		.byte	14
+ 201 00ac 98       		.byte	-104
+ 202 00ad 5C       		.byte	92
+ 203 00ae 99       		.byte	-103
+ 204 00af 0C       		.byte	12
+ 205 00b0 9A       		.byte	-102
+ 206 00b1 02       		.byte	2
+ 207 00b2 9B       		.byte	-101
+ 208 00b3 03       		.byte	3
+ 209 00b4 9D       		.byte	-99
+ 210 00b5 01       		.byte	1
+ 211 00b6 9F       		.byte	-97
+ 212 00b7 06       		.byte	6
+ 213 00b8 A0       		.byte	-96
+ 214 00b9 10       		.byte	16
+ 215 00ba A3       		.byte	-93
+ 216 00bb 08       		.byte	8
+ 217 00bc AA       		.byte	-86
+ 218 00bd 20       		.byte	32
+ 219 00be AC       		.byte	-84
+ 220 00bf 09       		.byte	9
+ 221 00c0 AE       		.byte	-82
+ 222 00c1 10       		.byte	16
+ 223 00c2 B2       		.byte	-78
+ 224 00c3 1F       		.byte	31
+ 225 00c4 B3       		.byte	-77
+ 226 00c5 10       		.byte	16
+ 227 00c6 B5       		.byte	-75
+ 228 00c7 0F       		.byte	15
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccJLjNJy.s 			page 5
+
+
+ 229 00c8 B6       		.byte	-74
+ 230 00c9 60       		.byte	96
+ 231 00ca B8       		.byte	-72
+ 232 00cb 80       		.byte	-128
+ 233 00cc BB       		.byte	-69
+ 234 00cd 20       		.byte	32
+ 235 00ce BE       		.byte	-66
+ 236 00cf 40       		.byte	64
+ 237 00d0 BF       		.byte	-65
+ 238 00d1 04       		.byte	4
+ 239 00d2 C0       		.byte	-64
+ 240 00d3 01       		.byte	1
+ 241 00d4 C5       		.byte	-59
+ 242 00d5 40       		.byte	64
+ 243 00d6 C9       		.byte	-55
+ 244 00d7 FF       		.byte	-1
+ 245 00d8 CA       		.byte	-54
+ 246 00d9 07       		.byte	7
+ 247 00da CB       		.byte	-53
+ 248 00db FF       		.byte	-1
+ 249 00dc CC       		.byte	-52
+ 250 00dd 40       		.byte	64
+ 251 00de CD       		.byte	-51
+ 252 00df 20       		.byte	32
+ 253 00e0 CE       		.byte	-50
+ 254 00e1 F0       		.byte	-16
+ 255 00e2 CF       		.byte	-49
+ 256 00e3 05       		.byte	5
+ 257 00e4 D0       		.byte	-48
+ 258 00e5 08       		.byte	8
+ 259 00e6 D8       		.byte	-40
+ 260 00e7 04       		.byte	4
+ 261 00e8 D9       		.byte	-39
+ 262 00e9 04       		.byte	4
+ 263 00ea DA       		.byte	-38
+ 264 00eb 04       		.byte	4
+ 265 00ec DF       		.byte	-33
+ 266 00ed 01       		.byte	1
+ 267 00ee E0       		.byte	-32
+ 268 00ef 40       		.byte	64
+ 269 00f0 E1       		.byte	-31
+ 270 00f1 A8       		.byte	-88
+ 271 00f2 E2       		.byte	-30
+ 272 00f3 40       		.byte	64
+ 273 00f4 E3       		.byte	-29
+ 274 00f5 20       		.byte	32
+ 275 00f6 00       		.byte	0
+ 276 00f7 90       		.byte	-112
+ 277 00f8 04       		.byte	4
+ 278 00f9 20       		.byte	32
+ 279 00fa 05       		.byte	5
+ 280 00fb 41       		.byte	65
+ 281 00fc 08       		.byte	8
+ 282 00fd 04       		.byte	4
+ 283 00fe 09       		.byte	9
+ 284 00ff 28       		.byte	40
+ 285 0100 0A       		.byte	10
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccJLjNJy.s 			page 6
+
+
+ 286 0101 C0       		.byte	-64
+ 287 0102 0D       		.byte	13
+ 288 0103 20       		.byte	32
+ 289 0104 0F       		.byte	15
+ 290 0105 62       		.byte	98
+ 291 0106 10       		.byte	16
+ 292 0107 88       		.byte	-120
+ 293 0108 13       		.byte	19
+ 294 0109 4C       		.byte	76
+ 295 010a 14       		.byte	20
+ 296 010b 44       		.byte	68
+ 297 010c 15       		.byte	21
+ 298 010d 08       		.byte	8
+ 299 010e 18       		.byte	24
+ 300 010f 10       		.byte	16
+ 301 0110 1A       		.byte	26
+ 302 0111 01       		.byte	1
+ 303 0112 1D       		.byte	29
+ 304 0113 48       		.byte	72
+ 305 0114 1E       		.byte	30
+ 306 0115 06       		.byte	6
+ 307 0116 20       		.byte	32
+ 308 0117 08       		.byte	8
+ 309 0118 21       		.byte	33
+ 310 0119 20       		.byte	32
+ 311 011a 22       		.byte	34
+ 312 011b 04       		.byte	4
+ 313 011c 24       		.byte	36
+ 314 011d 20       		.byte	32
+ 315 011e 25       		.byte	37
+ 316 011f 04       		.byte	4
+ 317 0120 27       		.byte	39
+ 318 0121 4A       		.byte	74
+ 319 0122 29       		.byte	41
+ 320 0123 01       		.byte	1
+ 321 0124 2C       		.byte	44
+ 322 0125 20       		.byte	32
+ 323 0126 2E       		.byte	46
+ 324 0127 90       		.byte	-112
+ 325 0128 30       		.byte	48
+ 326 0129 40       		.byte	64
+ 327 012a 31       		.byte	49
+ 328 012b 28       		.byte	40
+ 329 012c 32       		.byte	50
+ 330 012d 40       		.byte	64
+ 331 012e 36       		.byte	54
+ 332 012f 01       		.byte	1
+ 333 0130 37       		.byte	55
+ 334 0131 50       		.byte	80
+ 335 0132 3B       		.byte	59
+ 336 0133 68       		.byte	104
+ 337 0134 3C       		.byte	60
+ 338 0135 40       		.byte	64
+ 339 0136 3D       		.byte	61
+ 340 0137 08       		.byte	8
+ 341 0138 3F       		.byte	63
+ 342 0139 22       		.byte	34
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccJLjNJy.s 			page 7
+
+
+ 343 013a 42       		.byte	66
+ 344 013b 01       		.byte	1
+ 345 013c 48       		.byte	72
+ 346 013d 80       		.byte	-128
+ 347 013e 49       		.byte	73
+ 348 013f 01       		.byte	1
+ 349 0140 50       		.byte	80
+ 350 0141 08       		.byte	8
+ 351 0142 51       		.byte	81
+ 352 0143 04       		.byte	4
+ 353 0144 53       		.byte	83
+ 354 0145 04       		.byte	4
+ 355 0146 86       		.byte	-122
+ 356 0147 04       		.byte	4
+ 357 0148 9F       		.byte	-97
+ 358 0149 02       		.byte	2
+ 359 014a A3       		.byte	-93
+ 360 014b 01       		.byte	1
+ 361 014c AF       		.byte	-81
+ 362 014d 02       		.byte	2
+ 363 014e C0       		.byte	-64
+ 364 014f D3       		.byte	-45
+ 365 0150 C2       		.byte	-62
+ 366 0151 FE       		.byte	-2
+ 367 0152 C4       		.byte	-60
+ 368 0153 7B       		.byte	123
+ 369 0154 CA       		.byte	-54
+ 370 0155 71       		.byte	113
+ 371 0156 CC       		.byte	-52
+ 372 0157 BE       		.byte	-66
+ 373 0158 CE       		.byte	-50
+ 374 0159 FE       		.byte	-2
+ 375 015a D0       		.byte	-48
+ 376 015b 08       		.byte	8
+ 377 015c 02       		.byte	2
+ 378 015d 04       		.byte	4
+ 379 015e 06       		.byte	6
+ 380 015f 04       		.byte	4
+ 381 0160 08       		.byte	8
+ 382 0161 01       		.byte	1
+ 383 0162 10       		.byte	16
+ 384 0163 04       		.byte	4
+ 385 0164 14       		.byte	20
+ 386 0165 04       		.byte	4
+ 387 0166 1A       		.byte	26
+ 388 0167 04       		.byte	4
+ 389 0168 1C       		.byte	28
+ 390 0169 02       		.byte	2
+ 391 016a 24       		.byte	36
+ 392 016b 02       		.byte	2
+ 393 016c 28       		.byte	40
+ 394 016d 02       		.byte	2
+ 395 016e 30       		.byte	48
+ 396 016f 04       		.byte	4
+ 397 0170 34       		.byte	52
+ 398 0171 01       		.byte	1
+ 399 0172 36       		.byte	54
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccJLjNJy.s 			page 8
+
+
+ 400 0173 02       		.byte	2
+ 401 0174 3E       		.byte	62
+ 402 0175 11       		.byte	17
+ 403 0176 58       		.byte	88
+ 404 0177 04       		.byte	4
+ 405 0178 5F       		.byte	95
+ 406 0179 01       		.byte	1
+ 407 017a 80       		.byte	-128
+ 408 017b 02       		.byte	2
+ 409 017c 81       		.byte	-127
+ 410 017d FF       		.byte	-1
+ 411 017e 84       		.byte	-124
+ 412 017f 1C       		.byte	28
+ 413 0180 85       		.byte	-123
+ 414 0181 08       		.byte	8
+ 415 0182 86       		.byte	-122
+ 416 0183 23       		.byte	35
+ 417 0184 88       		.byte	-120
+ 418 0185 03       		.byte	3
+ 419 0186 89       		.byte	-119
+ 420 0187 18       		.byte	24
+ 421 0188 8C       		.byte	-116
+ 422 0189 1F       		.byte	31
+ 423 018a 8D       		.byte	-115
+ 424 018b 1C       		.byte	28
+ 425 018c 8E       		.byte	-114
+ 426 018d 20       		.byte	32
+ 427 018e 8F       		.byte	-113
+ 428 018f E1       		.byte	-31
+ 429 0190 91       		.byte	-111
+ 430 0191 10       		.byte	16
+ 431 0192 92       		.byte	-110
+ 432 0193 23       		.byte	35
+ 433 0194 94       		.byte	-108
+ 434 0195 3F       		.byte	63
+ 435 0196 95       		.byte	-107
+ 436 0197 80       		.byte	-128
+ 437 0198 98       		.byte	-104
+ 438 0199 33       		.byte	51
+ 439 019a 99       		.byte	-103
+ 440 019b 3C       		.byte	60
+ 441 019c 9A       		.byte	-102
+ 442 019d 0C       		.byte	12
+ 443 019e 9B       		.byte	-101
+ 444 019f C2       		.byte	-62
+ 445 01a0 9C       		.byte	-100
+ 446 01a1 01       		.byte	1
+ 447 01a2 9E       		.byte	-98
+ 448 01a3 40       		.byte	64
+ 449 01a4 9F       		.byte	-97
+ 450 01a5 04       		.byte	4
+ 451 01a6 A0       		.byte	-96
+ 452 01a7 08       		.byte	8
+ 453 01a8 A1       		.byte	-95
+ 454 01a9 44       		.byte	68
+ 455 01aa A4       		.byte	-92
+ 456 01ab 04       		.byte	4
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccJLjNJy.s 			page 9
+
+
+ 457 01ac A5       		.byte	-91
+ 458 01ad E7       		.byte	-25
+ 459 01ae A7       		.byte	-89
+ 460 01af 18       		.byte	24
+ 461 01b0 A8       		.byte	-88
+ 462 01b1 0C       		.byte	12
+ 463 01b2 A9       		.byte	-87
+ 464 01b3 C0       		.byte	-64
+ 465 01b4 AF       		.byte	-81
+ 466 01b5 E3       		.byte	-29
+ 467 01b6 B0       		.byte	-80
+ 468 01b7 2C       		.byte	44
+ 469 01b8 B1       		.byte	-79
+ 470 01b9 C0       		.byte	-64
+ 471 01ba B2       		.byte	-78
+ 472 01bb 10       		.byte	16
+ 473 01bc B3       		.byte	-77
+ 474 01bd 1F       		.byte	31
+ 475 01be B4       		.byte	-76
+ 476 01bf 0F       		.byte	15
+ 477 01c0 B5       		.byte	-75
+ 478 01c1 38       		.byte	56
+ 479 01c2 B6       		.byte	-74
+ 480 01c3 40       		.byte	64
+ 481 01c4 BA       		.byte	-70
+ 482 01c5 22       		.byte	34
+ 483 01c6 BB       		.byte	-69
+ 484 01c7 08       		.byte	8
+ 485 01c8 BE       		.byte	-66
+ 486 01c9 04       		.byte	4
+ 487 01ca D6       		.byte	-42
+ 488 01cb 02       		.byte	2
+ 489 01cc D7       		.byte	-41
+ 490 01cd 11       		.byte	17
+ 491 01ce D8       		.byte	-40
+ 492 01cf 04       		.byte	4
+ 493 01d0 D9       		.byte	-39
+ 494 01d1 04       		.byte	4
+ 495 01d2 DB       		.byte	-37
+ 496 01d3 04       		.byte	4
+ 497 01d4 DF       		.byte	-33
+ 498 01d5 01       		.byte	1
+ 499 01d6 00       		.byte	0
+ 500 01d7 18       		.byte	24
+ 501 01d8 02       		.byte	2
+ 502 01d9 80       		.byte	-128
+ 503 01da 04       		.byte	4
+ 504 01db 41       		.byte	65
+ 505 01dc 05       		.byte	5
+ 506 01dd 20       		.byte	32
+ 507 01de 07       		.byte	7
+ 508 01df 10       		.byte	16
+ 509 01e0 09       		.byte	9
+ 510 01e1 48       		.byte	72
+ 511 01e2 0A       		.byte	10
+ 512 01e3 40       		.byte	64
+ 513 01e4 0B       		.byte	11
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccJLjNJy.s 			page 10
+
+
+ 514 01e5 08       		.byte	8
+ 515 01e6 0C       		.byte	12
+ 516 01e7 80       		.byte	-128
+ 517 01e8 0E       		.byte	14
+ 518 01e9 14       		.byte	20
+ 519 01ea 0F       		.byte	15
+ 520 01eb 80       		.byte	-128
+ 521 01ec 10       		.byte	16
+ 522 01ed 08       		.byte	8
+ 523 01ee 11       		.byte	17
+ 524 01ef 08       		.byte	8
+ 525 01f0 17       		.byte	23
+ 526 01f1 29       		.byte	41
+ 527 01f2 18       		.byte	24
+ 528 01f3 04       		.byte	4
+ 529 01f4 19       		.byte	25
+ 530 01f5 80       		.byte	-128
+ 531 01f6 1A       		.byte	26
+ 532 01f7 80       		.byte	-128
+ 533 01f8 1B       		.byte	27
+ 534 01f9 40       		.byte	64
+ 535 01fa 1C       		.byte	28
+ 536 01fb 40       		.byte	64
+ 537 01fc 1D       		.byte	29
+ 538 01fd 40       		.byte	64
+ 539 01fe 1E       		.byte	30
+ 540 01ff 24       		.byte	36
+ 541 0200 24       		.byte	36
+ 542 0201 08       		.byte	8
+ 543 0202 26       		.byte	38
+ 544 0203 01       		.byte	1
+ 545 0204 27       		.byte	39
+ 546 0205 10       		.byte	16
+ 547 0206 2C       		.byte	44
+ 548 0207 80       		.byte	-128
+ 549 0208 2D       		.byte	45
+ 550 0209 A0       		.byte	-96
+ 551 020a 2E       		.byte	46
+ 552 020b 04       		.byte	4
+ 553 020c 35       		.byte	53
+ 554 020d 40       		.byte	64
+ 555 020e 37       		.byte	55
+ 556 020f 15       		.byte	21
+ 557 0210 3C       		.byte	60
+ 558 0211 40       		.byte	64
+ 559 0212 3E       		.byte	62
+ 560 0213 28       		.byte	40
+ 561 0214 3F       		.byte	63
+ 562 0215 01       		.byte	1
+ 563 0216 5E       		.byte	94
+ 564 0217 20       		.byte	32
+ 565 0218 6C       		.byte	108
+ 566 0219 08       		.byte	8
+ 567 021a 6D       		.byte	109
+ 568 021b 88       		.byte	-120
+ 569 021c 6F       		.byte	111
+ 570 021d 08       		.byte	8
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccJLjNJy.s 			page 11
+
+
+ 571 021e 76       		.byte	118
+ 572 021f 28       		.byte	40
+ 573 0220 77       		.byte	119
+ 574 0221 29       		.byte	41
+ 575 0222 86       		.byte	-122
+ 576 0223 84       		.byte	-124
+ 577 0224 88       		.byte	-120
+ 578 0225 80       		.byte	-128
+ 579 0226 8B       		.byte	-117
+ 580 0227 02       		.byte	2
+ 581 0228 8C       		.byte	-116
+ 582 0229 05       		.byte	5
+ 583 022a 8F       		.byte	-113
+ 584 022b 04       		.byte	4
+ 585 022c 90       		.byte	-112
+ 586 022d 10       		.byte	16
+ 587 022e 92       		.byte	-110
+ 588 022f 50       		.byte	80
+ 589 0230 93       		.byte	-109
+ 590 0231 09       		.byte	9
+ 591 0232 94       		.byte	-108
+ 592 0233 48       		.byte	72
+ 593 0234 96       		.byte	-106
+ 594 0235 80       		.byte	-128
+ 595 0236 99       		.byte	-103
+ 596 0237 20       		.byte	32
+ 597 0238 9B       		.byte	-101
+ 598 0239 04       		.byte	4
+ 599 023a 9E       		.byte	-98
+ 600 023b 80       		.byte	-128
+ 601 023c 9F       		.byte	-97
+ 602 023d 10       		.byte	16
+ 603 023e A0       		.byte	-96
+ 604 023f 04       		.byte	4
+ 605 0240 A1       		.byte	-95
+ 606 0241 08       		.byte	8
+ 607 0242 A2       		.byte	-94
+ 608 0243 80       		.byte	-128
+ 609 0244 A5       		.byte	-91
+ 610 0245 04       		.byte	4
+ 611 0246 A6       		.byte	-90
+ 612 0247 01       		.byte	1
+ 613 0248 A7       		.byte	-89
+ 614 0249 4A       		.byte	74
+ 615 024a A9       		.byte	-87
+ 616 024b 10       		.byte	16
+ 617 024c AB       		.byte	-85
+ 618 024d 01       		.byte	1
+ 619 024e AF       		.byte	-81
+ 620 024f 12       		.byte	18
+ 621 0250 B5       		.byte	-75
+ 622 0251 10       		.byte	16
+ 623 0252 B6       		.byte	-74
+ 624 0253 80       		.byte	-128
+ 625 0254 C0       		.byte	-64
+ 626 0255 FE       		.byte	-2
+ 627 0256 C2       		.byte	-62
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccJLjNJy.s 			page 12
+
+
+ 628 0257 FF       		.byte	-1
+ 629 0258 C4       		.byte	-60
+ 630 0259 76       		.byte	118
+ 631 025a CA       		.byte	-54
+ 632 025b F0       		.byte	-16
+ 633 025c CC       		.byte	-52
+ 634 025d F0       		.byte	-16
+ 635 025e CE       		.byte	-50
+ 636 025f F0       		.byte	-16
+ 637 0260 D6       		.byte	-42
+ 638 0261 20       		.byte	32
+ 639 0262 05       		.byte	5
+ 640 0263 0C       		.byte	12
+ 641 0264 06       		.byte	6
+ 642 0265 01       		.byte	1
+ 643 0266 15       		.byte	21
+ 644 0267 08       		.byte	8
+ 645 0268 17       		.byte	23
+ 646 0269 06       		.byte	6
+ 647 026a 1A       		.byte	26
+ 648 026b 01       		.byte	1
+ 649 026c 27       		.byte	39
+ 650 026d 01       		.byte	1
+ 651 026e 29       		.byte	41
+ 652 026f 0C       		.byte	12
+ 653 0270 2D       		.byte	45
+ 654 0271 04       		.byte	4
+ 655 0272 2F       		.byte	47
+ 656 0273 0A       		.byte	10
+ 657 0274 31       		.byte	49
+ 658 0275 03       		.byte	3
+ 659 0276 35       		.byte	53
+ 660 0277 0C       		.byte	12
+ 661 0278 36       		.byte	54
+ 662 0279 01       		.byte	1
+ 663 027a 3A       		.byte	58
+ 664 027b 08       		.byte	8
+ 665 027c 3E       		.byte	62
+ 666 027d 40       		.byte	64
+ 667 027e 3F       		.byte	63
+ 668 027f 01       		.byte	1
+ 669 0280 40       		.byte	64
+ 670 0281 45       		.byte	69
+ 671 0282 41       		.byte	65
+ 672 0283 02       		.byte	2
+ 673 0284 42       		.byte	66
+ 674 0285 03       		.byte	3
+ 675 0286 44       		.byte	68
+ 676 0287 01       		.byte	1
+ 677 0288 45       		.byte	69
+ 678 0289 0C       		.byte	12
+ 679 028a 46       		.byte	70
+ 680 028b E0       		.byte	-32
+ 681 028c 48       		.byte	72
+ 682 028d 09       		.byte	9
+ 683 028e 49       		.byte	73
+ 684 028f FF       		.byte	-1
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccJLjNJy.s 			page 13
+
+
+ 685 0290 4A       		.byte	74
+ 686 0291 FF       		.byte	-1
+ 687 0292 4B       		.byte	75
+ 688 0293 FF       		.byte	-1
+ 689 0294 4C       		.byte	76
+ 690 0295 62       		.byte	98
+ 691 0296 4D       		.byte	77
+ 692 0297 A0       		.byte	-96
+ 693 0298 4E       		.byte	78
+ 694 0299 F0       		.byte	-16
+ 695 029a 4F       		.byte	79
+ 696 029b 41       		.byte	65
+ 697 029c 50       		.byte	80
+ 698 029d 0C       		.byte	12
+ 699 029e 54       		.byte	84
+ 700 029f 18       		.byte	24
+ 701 02a0 58       		.byte	88
+ 702 02a1 04       		.byte	4
+ 703 02a2 59       		.byte	89
+ 704 02a3 04       		.byte	4
+ 705 02a4 5A       		.byte	90
+ 706 02a5 04       		.byte	4
+ 707 02a6 5B       		.byte	91
+ 708 02a7 04       		.byte	4
+ 709 02a8 5F       		.byte	95
+ 710 02a9 01       		.byte	1
+ 711 02aa 66       		.byte	102
+ 712 02ab 40       		.byte	64
+ 713 02ac 67       		.byte	103
+ 714 02ad 02       		.byte	2
+ 715 02ae 69       		.byte	105
+ 716 02af 10       		.byte	16
+ 717 02b0 6A       		.byte	106
+ 718 02b1 30       		.byte	48
+ 719 02b2 6B       		.byte	107
+ 720 02b3 10       		.byte	16
+ 721 02b4 6D       		.byte	109
+ 722 02b5 10       		.byte	16
+ 723 02b6 6E       		.byte	110
+ 724 02b7 10       		.byte	16
+ 725 02b8 6F       		.byte	111
+ 726 02b9 12       		.byte	18
+ 727 02ba 80       		.byte	-128
+ 728 02bb 03       		.byte	3
+ 729 02bc 82       		.byte	-126
+ 730 02bd 04       		.byte	4
+ 731 02be 84       		.byte	-124
+ 732 02bf 70       		.byte	112
+ 733 02c0 85       		.byte	-123
+ 734 02c1 02       		.byte	2
+ 735 02c2 88       		.byte	-120
+ 736 02c3 70       		.byte	112
+ 737 02c4 8C       		.byte	-116
+ 738 02c5 20       		.byte	32
+ 739 02c6 8E       		.byte	-114
+ 740 02c7 10       		.byte	16
+ 741 02c8 90       		.byte	-112
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccJLjNJy.s 			page 14
+
+
+ 742 02c9 03       		.byte	3
+ 743 02ca 92       		.byte	-110
+ 744 02cb 0C       		.byte	12
+ 745 02cc 94       		.byte	-108
+ 746 02cd 03       		.byte	3
+ 747 02ce 95       		.byte	-107
+ 748 02cf 01       		.byte	1
+ 749 02d0 96       		.byte	-106
+ 750 02d1 04       		.byte	4
+ 751 02d2 98       		.byte	-104
+ 752 02d3 10       		.byte	16
+ 753 02d4 9A       		.byte	-102
+ 754 02d5 60       		.byte	96
+ 755 02d6 9C       		.byte	-100
+ 756 02d7 0A       		.byte	10
+ 757 02d8 9E       		.byte	-98
+ 758 02d9 04       		.byte	4
+ 759 02da A3       		.byte	-93
+ 760 02db 01       		.byte	1
+ 761 02dc A4       		.byte	-92
+ 762 02dd 40       		.byte	64
+ 763 02de A6       		.byte	-90
+ 764 02df 10       		.byte	16
+ 765 02e0 AA       		.byte	-86
+ 766 02e1 05       		.byte	5
+ 767 02e2 AD       		.byte	-83
+ 768 02e3 01       		.byte	1
+ 769 02e4 AE       		.byte	-82
+ 770 02e5 08       		.byte	8
+ 771 02e6 B0       		.byte	-80
+ 772 02e7 0F       		.byte	15
+ 773 02e8 B1       		.byte	-79
+ 774 02e9 03       		.byte	3
+ 775 02ea B4       		.byte	-76
+ 776 02eb 70       		.byte	112
+ 777 02ec B9       		.byte	-71
+ 778 02ed 02       		.byte	2
+ 779 02ee BA       		.byte	-70
+ 780 02ef 02       		.byte	2
+ 781 02f0 C0       		.byte	-64
+ 782 02f1 46       		.byte	70
+ 783 02f2 C1       		.byte	-63
+ 784 02f3 03       		.byte	3
+ 785 02f4 C5       		.byte	-59
+ 786 02f5 B0       		.byte	-80
+ 787 02f6 C6       		.byte	-58
+ 788 02f7 EC       		.byte	-20
+ 789 02f8 C8       		.byte	-56
+ 790 02f9 0E       		.byte	14
+ 791 02fa C9       		.byte	-55
+ 792 02fb FF       		.byte	-1
+ 793 02fc CA       		.byte	-54
+ 794 02fd FF       		.byte	-1
+ 795 02fe CB       		.byte	-53
+ 796 02ff FF       		.byte	-1
+ 797 0300 CE       		.byte	-50
+ 798 0301 F0       		.byte	-16
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccJLjNJy.s 			page 15
+
+
+ 799 0302 CF       		.byte	-49
+ 800 0303 44       		.byte	68
+ 801 0304 D0       		.byte	-48
+ 802 0305 0C       		.byte	12
+ 803 0306 D4       		.byte	-44
+ 804 0307 01       		.byte	1
+ 805 0308 D8       		.byte	-40
+ 806 0309 04       		.byte	4
+ 807 030a D9       		.byte	-39
+ 808 030b 04       		.byte	4
+ 809 030c DA       		.byte	-38
+ 810 030d 04       		.byte	4
+ 811 030e DB       		.byte	-37
+ 812 030f 04       		.byte	4
+ 813 0310 DF       		.byte	-33
+ 814 0311 01       		.byte	1
+ 815 0312 E6       		.byte	-26
+ 816 0313 C0       		.byte	-64
+ 817 0314 EA       		.byte	-22
+ 818 0315 40       		.byte	64
+ 819 0316 EB       		.byte	-21
+ 820 0317 02       		.byte	2
+ 821 0318 01       		.byte	1
+ 822 0319 04       		.byte	4
+ 823 031a 02       		.byte	2
+ 824 031b 80       		.byte	-128
+ 825 031c 03       		.byte	3
+ 826 031d 0A       		.byte	10
+ 827 031e 04       		.byte	4
+ 828 031f 08       		.byte	8
+ 829 0320 06       		.byte	6
+ 830 0321 10       		.byte	16
+ 831 0322 08       		.byte	8
+ 832 0323 80       		.byte	-128
+ 833 0324 09       		.byte	9
+ 834 0325 08       		.byte	8
+ 835 0326 0A       		.byte	10
+ 836 0327 44       		.byte	68
+ 837 0328 0F       		.byte	15
+ 838 0329 08       		.byte	8
+ 839 032a 10       		.byte	16
+ 840 032b 08       		.byte	8
+ 841 032c 12       		.byte	18
+ 842 032d 20       		.byte	32
+ 843 032e 13       		.byte	19
+ 844 032f 40       		.byte	64
+ 845 0330 19       		.byte	25
+ 846 0331 20       		.byte	32
+ 847 0332 1A       		.byte	26
+ 848 0333 44       		.byte	68
+ 849 0334 1B       		.byte	27
+ 850 0335 01       		.byte	1
+ 851 0336 1D       		.byte	29
+ 852 0337 40       		.byte	64
+ 853 0338 1E       		.byte	30
+ 854 0339 10       		.byte	16
+ 855 033a 23       		.byte	35
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccJLjNJy.s 			page 16
+
+
+ 856 033b 40       		.byte	64
+ 857 033c 26       		.byte	38
+ 858 033d 20       		.byte	32
+ 859 033e 27       		.byte	39
+ 860 033f 44       		.byte	68
+ 861 0340 28       		.byte	40
+ 862 0341 80       		.byte	-128
+ 863 0342 2B       		.byte	43
+ 864 0343 01       		.byte	1
+ 865 0344 2E       		.byte	46
+ 866 0345 04       		.byte	4
+ 867 0346 2F       		.byte	47
+ 868 0347 0A       		.byte	10
+ 869 0348 31       		.byte	49
+ 870 0349 08       		.byte	8
+ 871 034a 37       		.byte	55
+ 872 034b 04       		.byte	4
+ 873 034c 3B       		.byte	59
+ 874 034d 08       		.byte	8
+ 875 034e 3D       		.byte	61
+ 876 034f 2C       		.byte	44
+ 877 0350 3E       		.byte	62
+ 878 0351 10       		.byte	16
+ 879 0352 41       		.byte	65
+ 880 0353 08       		.byte	8
+ 881 0354 42       		.byte	66
+ 882 0355 40       		.byte	64
+ 883 0356 45       		.byte	69
+ 884 0357 10       		.byte	16
+ 885 0358 46       		.byte	70
+ 886 0359 90       		.byte	-112
+ 887 035a 47       		.byte	71
+ 888 035b 40       		.byte	64
+ 889 035c 48       		.byte	72
+ 890 035d 48       		.byte	72
+ 891 035e 4F       		.byte	79
+ 892 035f 88       		.byte	-120
+ 893 0360 52       		.byte	82
+ 894 0361 80       		.byte	-128
+ 895 0362 53       		.byte	83
+ 896 0363 10       		.byte	16
+ 897 0364 54       		.byte	84
+ 898 0365 20       		.byte	32
+ 899 0366 59       		.byte	89
+ 900 0367 10       		.byte	16
+ 901 0368 5A       		.byte	90
+ 902 0369 88       		.byte	-120
+ 903 036a 5B       		.byte	91
+ 904 036b 02       		.byte	2
+ 905 036c 5E       		.byte	94
+ 906 036d 02       		.byte	2
+ 907 036e 65       		.byte	101
+ 908 036f 40       		.byte	64
+ 909 0370 67       		.byte	103
+ 910 0371 04       		.byte	4
+ 911 0372 88       		.byte	-120
+ 912 0373 84       		.byte	-124
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccJLjNJy.s 			page 17
+
+
+ 913 0374 90       		.byte	-112
+ 914 0375 10       		.byte	16
+ 915 0376 92       		.byte	-110
+ 916 0377 08       		.byte	8
+ 917 0378 93       		.byte	-109
+ 918 0379 0C       		.byte	12
+ 919 037a 94       		.byte	-108
+ 920 037b 40       		.byte	64
+ 921 037c 96       		.byte	-106
+ 922 037d 50       		.byte	80
+ 923 037e 97       		.byte	-105
+ 924 037f 60       		.byte	96
+ 925 0380 9E       		.byte	-98
+ 926 0381 80       		.byte	-128
+ 927 0382 9F       		.byte	-97
+ 928 0383 10       		.byte	16
+ 929 0384 A0       		.byte	-96
+ 930 0385 0C       		.byte	12
+ 931 0386 A1       		.byte	-95
+ 932 0387 08       		.byte	8
+ 933 0388 A4       		.byte	-92
+ 934 0389 60       		.byte	96
+ 935 038a B7       		.byte	-73
+ 936 038b 10       		.byte	16
+ 937 038c C0       		.byte	-64
+ 938 038d 2F       		.byte	47
+ 939 038e C2       		.byte	-62
+ 940 038f 4F       		.byte	79
+ 941 0390 C4       		.byte	-60
+ 942 0391 07       		.byte	7
+ 943 0392 CA       		.byte	-54
+ 944 0393 79       		.byte	121
+ 945 0394 CC       		.byte	-52
+ 946 0395 42       		.byte	66
+ 947 0396 CE       		.byte	-50
+ 948 0397 42       		.byte	66
+ 949 0398 D0       		.byte	-48
+ 950 0399 F3       		.byte	-13
+ 951 039a D2       		.byte	-46
+ 952 039b 14       		.byte	20
+ 953 039c D6       		.byte	-42
+ 954 039d 8F       		.byte	-113
+ 955 039e D8       		.byte	-40
+ 956 039f 30       		.byte	48
+ 957 03a0 E8       		.byte	-24
+ 958 03a1 10       		.byte	16
+ 959 03a2 E4       		.byte	-28
+ 960 03a3 40       		.byte	64
+ 961 03a4 E6       		.byte	-26
+ 962 03a5 80       		.byte	-128
+ 963 03a6 30       		.byte	48
+ 964 03a7 10       		.byte	16
+ 965 03a8 37       		.byte	55
+ 966 03a9 80       		.byte	-128
+ 967 03aa CC       		.byte	-52
+ 968 03ab 30       		.byte	48
+ 969 03ac 03       		.byte	3
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccJLjNJy.s 			page 18
+
+
+ 970 03ad 80       		.byte	-128
+ 971 03ae 07       		.byte	7
+ 972 03af 40       		.byte	64
+ 973 03b0 9C       		.byte	-100
+ 974 03b1 10       		.byte	16
+ 975 03b2 9F       		.byte	-97
+ 976 03b3 80       		.byte	-128
+ 977 03b4 C0       		.byte	-64
+ 978 03b5 30       		.byte	48
+ 979 03b6 9B       		.byte	-101
+ 980 03b7 40       		.byte	64
+ 981 03b8 9C       		.byte	-100
+ 982 03b9 10       		.byte	16
+ 983 03ba 9F       		.byte	-97
+ 984 03bb 80       		.byte	-128
+ 985 03bc AF       		.byte	-81
+ 986 03bd 80       		.byte	-128
+ 987 03be EC       		.byte	-20
+ 988 03bf 10       		.byte	16
+ 989 03c0 87       		.byte	-121
+ 990 03c1 80       		.byte	-128
+ 991 03c2 9B       		.byte	-101
+ 992 03c3 40       		.byte	64
+ 993 03c4 9F       		.byte	-97
+ 994 03c5 80       		.byte	-128
+ 995 03c6 AC       		.byte	-84
+ 996 03c7 10       		.byte	16
+ 997 03c8 E2       		.byte	-30
+ 998 03c9 40       		.byte	64
+ 999 03ca EE       		.byte	-18
+ 1000 03cb 40       		.byte	64
+ 1001 03cc B7       		.byte	-73
+ 1002 03cd 40       		.byte	64
+ 1003 03ce 10       		.byte	16
+ 1004 03cf 80       		.byte	-128
+ 1005 03d0 75       		.byte	117
+ 1006 03d1 01       		.byte	1
+ 1007 03d2 88       		.byte	-120
+ 1008 03d3 80       		.byte	-128
+ 1009 03d4 8D       		.byte	-115
+ 1010 03d5 01       		.byte	1
+ 1011 03d6 C4       		.byte	-60
+ 1012 03d7 08       		.byte	8
+ 1013 03d8 DE       		.byte	-34
+ 1014 03d9 04       		.byte	4
+ 1015 03da E4       		.byte	-28
+ 1016 03db 02       		.byte	2
+ 1017 03dc E6       		.byte	-26
+ 1018 03dd 01       		.byte	1
+ 1019 03de 00       		.byte	0
+ 1020 03df 01       		.byte	1
+ 1021 03e0 0A       		.byte	10
+ 1022 03e1 01       		.byte	1
+ 1023 03e2 10       		.byte	16
+ 1024 03e3 01       		.byte	1
+ 1025 03e4 1A       		.byte	26
+ 1026 03e5 01       		.byte	1
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccJLjNJy.s 			page 19
+
+
+ 1027 03e6 00       		.byte	0
+ 1028 03e7 0F       		.byte	15
+ 1029 03e8 80       		.byte	-128
+ 1030 03e9 80       		.byte	-128
+ 1031 03ea 00       		.byte	0
+ 1032 03eb 00       		.byte	0
+ 1033 03ec 40       		.byte	64
+ 1034 03ed 00       		.byte	0
+ 1035 03ee 00       		.byte	0
+ 1036 03ef 00       		.byte	0
+ 1037 03f0 03       		.byte	3
+ 1038 03f1 00       		.byte	0
+ 1039 03f2 00       		.byte	0
+ 1040 03f3 00       		.byte	0
+ 1041 03f4 00       		.byte	0
+ 1042 03f5 00       		.byte	0
+ 1043 03f6 00       		.byte	0
+ 1044 03f7 00       		.byte	0
+ 1045 03f8 80       		.byte	-128
+ 1046 03f9 00       		.byte	0
+ 1047 03fa 40       		.byte	64
+ 1048 03fb 80       		.byte	-128
+ 1049 03fc 80       		.byte	-128
+ 1050 03fd 00       		.byte	0
+ 1051 03fe 80       		.byte	-128
+ 1052 03ff 00       		.byte	0
+ 1053 0400 00       		.byte	0
+ 1054 0401 00       		.byte	0
+ 1055 0402 00       		.byte	0
+ 1056 0403 00       		.byte	0
+ 1057 0404 00       		.byte	0
+ 1058 0405 0B       		.byte	11
+ 1059 0406 0B       		.byte	11
+ 1060 0407 00       		.byte	0
+ 1061 0408 00       		.byte	0
+ 1062 0409 00       		.byte	0
+ 1063 040a 00       		.byte	0
+ 1064 040b 00       		.byte	0
+ 1065              		.section	.cywolatch,"a",%progbits
+ 1066              		.align	2
+ 1067              		.type	cy_meta_wonvl, %object
+ 1068              		.size	cy_meta_wonvl, 4
+ 1069              	cy_meta_wonvl:
+ 1070 0000 BC       		.byte	-68
+ 1071 0001 90       		.byte	-112
+ 1072 0002 AC       		.byte	-84
+ 1073 0003 AF       		.byte	-81
+ 1074              		.section	.cycustnvl,"a",%progbits
+ 1075              		.align	2
+ 1076              		.type	cy_meta_custnvl, %object
+ 1077              		.size	cy_meta_custnvl, 4
+ 1078              	cy_meta_custnvl:
+ 1079 0000 00       		.byte	0
+ 1080 0001 00       		.byte	0
+ 1081 0002 40       		.byte	64
+ 1082 0003 05       		.byte	5
+ 1083              		.section	.cymeta,"a",%progbits
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccJLjNJy.s 			page 20
+
+
+ 1084              		.align	2
+ 1085              		.type	cy_metadata, %object
+ 1086              		.size	cy_metadata, 12
+ 1087              	cy_metadata:
+ 1088 0000 00       		.byte	0
+ 1089 0001 01       		.byte	1
+ 1090 0002 2E       		.byte	46
+ 1091 0003 16       		.byte	22
+ 1092 0004 10       		.byte	16
+ 1093 0005 69       		.byte	105
+ 1094 0006 00       		.byte	0
+ 1095 0007 01       		.byte	1
+ 1096 0008 00       		.byte	0
+ 1097 0009 00       		.byte	0
+ 1098 000a 00       		.byte	0
+ 1099 000b 00       		.byte	0
+ 1100              		.section	.cyflashprotect,"a",%progbits
+ 1101              		.align	2
+ 1102              		.type	cy_meta_flashprotect, %object
+ 1103              		.size	cy_meta_flashprotect, 256
+ 1104              	cy_meta_flashprotect:
+ 1105 0000 00000000 		.space	256
+ 1105      00000000 
+ 1105      00000000 
+ 1105      00000000 
+ 1105      00000000 
+ 1106              		.text
+ 1107              	.Letext0:
+ 1108              		.file 1 "d:\\programs\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.1\\arm-none
+ 1109              		.file 2 "d:\\programs\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.1\\arm-none
+ 1110              		.file 3 "Generated_Source\\PSoC5\\cymetadata.c"
+ 1111              		.section	.debug_info,"",%progbits
+ 1112              	.Ldebug_info0:
+ 1113 0000 31010000 		.4byte	0x131
+ 1114 0004 0400     		.2byte	0x4
+ 1115 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 1116 000a 04       		.byte	0x4
+ 1117 000b 01       		.uleb128 0x1
+ 1118 000c 24000000 		.4byte	.LASF17
+ 1119 0010 0C       		.byte	0xc
+ 1120 0011 DC010000 		.4byte	.LASF18
+ 1121 0015 3A010000 		.4byte	.LASF19
+ 1122 0019 00000000 		.4byte	.Ldebug_line0
+ 1123 001d 02       		.uleb128 0x2
+ 1124 001e 01       		.byte	0x1
+ 1125 001f 06       		.byte	0x6
+ 1126 0020 D0010000 		.4byte	.LASF0
+ 1127 0024 03       		.uleb128 0x3
+ 1128 0025 00000000 		.4byte	.LASF9
+ 1129 0029 01       		.byte	0x1
+ 1130 002a 1D       		.byte	0x1d
+ 1131 002b 2F000000 		.4byte	0x2f
+ 1132 002f 02       		.uleb128 0x2
+ 1133 0030 01       		.byte	0x1
+ 1134 0031 08       		.byte	0x8
+ 1135 0032 16000000 		.4byte	.LASF1
+ 1136 0036 02       		.uleb128 0x2
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccJLjNJy.s 			page 21
+
+
+ 1137 0037 02       		.byte	0x2
+ 1138 0038 05       		.byte	0x5
+ 1139 0039 BD010000 		.4byte	.LASF2
+ 1140 003d 02       		.uleb128 0x2
+ 1141 003e 02       		.byte	0x2
+ 1142 003f 07       		.byte	0x7
+ 1143 0040 C4000000 		.4byte	.LASF3
+ 1144 0044 02       		.uleb128 0x2
+ 1145 0045 04       		.byte	0x4
+ 1146 0046 05       		.byte	0x5
+ 1147 0047 C7010000 		.4byte	.LASF4
+ 1148 004b 02       		.uleb128 0x2
+ 1149 004c 04       		.byte	0x4
+ 1150 004d 07       		.byte	0x7
+ 1151 004e B2000000 		.4byte	.LASF5
+ 1152 0052 02       		.uleb128 0x2
+ 1153 0053 08       		.byte	0x8
+ 1154 0054 05       		.byte	0x5
+ 1155 0055 AF010000 		.4byte	.LASF6
+ 1156 0059 02       		.uleb128 0x2
+ 1157 005a 08       		.byte	0x8
+ 1158 005b 07       		.byte	0x7
+ 1159 005c 06010000 		.4byte	.LASF7
+ 1160 0060 04       		.uleb128 0x4
+ 1161 0061 04       		.byte	0x4
+ 1162 0062 05       		.byte	0x5
+ 1163 0063 696E7400 		.ascii	"int\000"
+ 1164 0067 02       		.uleb128 0x2
+ 1165 0068 04       		.byte	0x4
+ 1166 0069 07       		.byte	0x7
+ 1167 006a F9000000 		.4byte	.LASF8
+ 1168 006e 03       		.uleb128 0x3
+ 1169 006f 1D010000 		.4byte	.LASF10
+ 1170 0073 02       		.byte	0x2
+ 1171 0074 18       		.byte	0x18
+ 1172 0075 24000000 		.4byte	0x24
+ 1173 0079 05       		.uleb128 0x5
+ 1174 007a 91000000 		.4byte	0x91
+ 1175 007e 8A000000 		.4byte	0x8a
+ 1176 0082 06       		.uleb128 0x6
+ 1177 0083 8A000000 		.4byte	0x8a
+ 1178 0087 0B04     		.2byte	0x40b
+ 1179 0089 00       		.byte	0
+ 1180 008a 02       		.uleb128 0x2
+ 1181 008b 04       		.byte	0x4
+ 1182 008c 07       		.byte	0x7
+ 1183 008d A6010000 		.4byte	.LASF11
+ 1184 0091 07       		.uleb128 0x7
+ 1185 0092 6E000000 		.4byte	0x6e
+ 1186 0096 08       		.uleb128 0x8
+ 1187 0097 E7000000 		.4byte	.LASF12
+ 1188 009b 03       		.byte	0x3
+ 1189 009c 1F       		.byte	0x1f
+ 1190 009d A7000000 		.4byte	0xa7
+ 1191 00a1 05       		.uleb128 0x5
+ 1192 00a2 03       		.byte	0x3
+ 1193 00a3 00000000 		.4byte	cy_meta_configecc
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccJLjNJy.s 			page 22
+
+
+ 1194 00a7 07       		.uleb128 0x7
+ 1195 00a8 79000000 		.4byte	0x79
+ 1196 00ac 05       		.uleb128 0x5
+ 1197 00ad 91000000 		.4byte	0x91
+ 1198 00b1 BC000000 		.4byte	0xbc
+ 1199 00b5 09       		.uleb128 0x9
+ 1200 00b6 8A000000 		.4byte	0x8a
+ 1201 00ba 03       		.byte	0x3
+ 1202 00bb 00       		.byte	0
+ 1203 00bc 08       		.uleb128 0x8
+ 1204 00bd D7000000 		.4byte	.LASF13
+ 1205 00c1 03       		.byte	0x3
+ 1206 00c2 AE       		.byte	0xae
+ 1207 00c3 CD000000 		.4byte	0xcd
+ 1208 00c7 05       		.uleb128 0x5
+ 1209 00c8 03       		.byte	0x3
+ 1210 00c9 00000000 		.4byte	cy_meta_custnvl
+ 1211 00cd 07       		.uleb128 0x7
+ 1212 00ce AC000000 		.4byte	0xac
+ 1213 00d2 08       		.uleb128 0x8
+ 1214 00d3 98010000 		.4byte	.LASF14
+ 1215 00d7 03       		.byte	0x3
+ 1216 00d8 BC       		.byte	0xbc
+ 1217 00d9 E3000000 		.4byte	0xe3
+ 1218 00dd 05       		.uleb128 0x5
+ 1219 00de 03       		.byte	0x3
+ 1220 00df 00000000 		.4byte	cy_meta_wonvl
+ 1221 00e3 07       		.uleb128 0x7
+ 1222 00e4 AC000000 		.4byte	0xac
+ 1223 00e8 05       		.uleb128 0x5
+ 1224 00e9 91000000 		.4byte	0x91
+ 1225 00ed F8000000 		.4byte	0xf8
+ 1226 00f1 09       		.uleb128 0x9
+ 1227 00f2 8A000000 		.4byte	0x8a
+ 1228 00f6 FF       		.byte	0xff
+ 1229 00f7 00       		.byte	0
+ 1230 00f8 08       		.uleb128 0x8
+ 1231 00f9 25010000 		.4byte	.LASF15
+ 1232 00fd 03       		.byte	0x3
+ 1233 00fe CA       		.byte	0xca
+ 1234 00ff 09010000 		.4byte	0x109
+ 1235 0103 05       		.uleb128 0x5
+ 1236 0104 03       		.byte	0x3
+ 1237 0105 00000000 		.4byte	cy_meta_flashprotect
+ 1238 0109 07       		.uleb128 0x7
+ 1239 010a E8000000 		.4byte	0xe8
+ 1240 010e 05       		.uleb128 0x5
+ 1241 010f 91000000 		.4byte	0x91
+ 1242 0113 1E010000 		.4byte	0x11e
+ 1243 0117 09       		.uleb128 0x9
+ 1244 0118 8A000000 		.4byte	0x8a
+ 1245 011c 0B       		.byte	0xb
+ 1246 011d 00       		.byte	0
+ 1247 011e 08       		.uleb128 0x8
+ 1248 011f 0A000000 		.4byte	.LASF16
+ 1249 0123 03       		.byte	0x3
+ 1250 0124 F7       		.byte	0xf7
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccJLjNJy.s 			page 23
+
+
+ 1251 0125 2F010000 		.4byte	0x12f
+ 1252 0129 05       		.uleb128 0x5
+ 1253 012a 03       		.byte	0x3
+ 1254 012b 00000000 		.4byte	cy_metadata
+ 1255 012f 07       		.uleb128 0x7
+ 1256 0130 0E010000 		.4byte	0x10e
+ 1257 0134 00       		.byte	0
+ 1258              		.section	.debug_abbrev,"",%progbits
+ 1259              	.Ldebug_abbrev0:
+ 1260 0000 01       		.uleb128 0x1
+ 1261 0001 11       		.uleb128 0x11
+ 1262 0002 01       		.byte	0x1
+ 1263 0003 25       		.uleb128 0x25
+ 1264 0004 0E       		.uleb128 0xe
+ 1265 0005 13       		.uleb128 0x13
+ 1266 0006 0B       		.uleb128 0xb
+ 1267 0007 03       		.uleb128 0x3
+ 1268 0008 0E       		.uleb128 0xe
+ 1269 0009 1B       		.uleb128 0x1b
+ 1270 000a 0E       		.uleb128 0xe
+ 1271 000b 10       		.uleb128 0x10
+ 1272 000c 17       		.uleb128 0x17
+ 1273 000d 00       		.byte	0
+ 1274 000e 00       		.byte	0
+ 1275 000f 02       		.uleb128 0x2
+ 1276 0010 24       		.uleb128 0x24
+ 1277 0011 00       		.byte	0
+ 1278 0012 0B       		.uleb128 0xb
+ 1279 0013 0B       		.uleb128 0xb
+ 1280 0014 3E       		.uleb128 0x3e
+ 1281 0015 0B       		.uleb128 0xb
+ 1282 0016 03       		.uleb128 0x3
+ 1283 0017 0E       		.uleb128 0xe
+ 1284 0018 00       		.byte	0
+ 1285 0019 00       		.byte	0
+ 1286 001a 03       		.uleb128 0x3
+ 1287 001b 16       		.uleb128 0x16
+ 1288 001c 00       		.byte	0
+ 1289 001d 03       		.uleb128 0x3
+ 1290 001e 0E       		.uleb128 0xe
+ 1291 001f 3A       		.uleb128 0x3a
+ 1292 0020 0B       		.uleb128 0xb
+ 1293 0021 3B       		.uleb128 0x3b
+ 1294 0022 0B       		.uleb128 0xb
+ 1295 0023 49       		.uleb128 0x49
+ 1296 0024 13       		.uleb128 0x13
+ 1297 0025 00       		.byte	0
+ 1298 0026 00       		.byte	0
+ 1299 0027 04       		.uleb128 0x4
+ 1300 0028 24       		.uleb128 0x24
+ 1301 0029 00       		.byte	0
+ 1302 002a 0B       		.uleb128 0xb
+ 1303 002b 0B       		.uleb128 0xb
+ 1304 002c 3E       		.uleb128 0x3e
+ 1305 002d 0B       		.uleb128 0xb
+ 1306 002e 03       		.uleb128 0x3
+ 1307 002f 08       		.uleb128 0x8
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccJLjNJy.s 			page 24
+
+
+ 1308 0030 00       		.byte	0
+ 1309 0031 00       		.byte	0
+ 1310 0032 05       		.uleb128 0x5
+ 1311 0033 01       		.uleb128 0x1
+ 1312 0034 01       		.byte	0x1
+ 1313 0035 49       		.uleb128 0x49
+ 1314 0036 13       		.uleb128 0x13
+ 1315 0037 01       		.uleb128 0x1
+ 1316 0038 13       		.uleb128 0x13
+ 1317 0039 00       		.byte	0
+ 1318 003a 00       		.byte	0
+ 1319 003b 06       		.uleb128 0x6
+ 1320 003c 21       		.uleb128 0x21
+ 1321 003d 00       		.byte	0
+ 1322 003e 49       		.uleb128 0x49
+ 1323 003f 13       		.uleb128 0x13
+ 1324 0040 2F       		.uleb128 0x2f
+ 1325 0041 05       		.uleb128 0x5
+ 1326 0042 00       		.byte	0
+ 1327 0043 00       		.byte	0
+ 1328 0044 07       		.uleb128 0x7
+ 1329 0045 26       		.uleb128 0x26
+ 1330 0046 00       		.byte	0
+ 1331 0047 49       		.uleb128 0x49
+ 1332 0048 13       		.uleb128 0x13
+ 1333 0049 00       		.byte	0
+ 1334 004a 00       		.byte	0
+ 1335 004b 08       		.uleb128 0x8
+ 1336 004c 34       		.uleb128 0x34
+ 1337 004d 00       		.byte	0
+ 1338 004e 03       		.uleb128 0x3
+ 1339 004f 0E       		.uleb128 0xe
+ 1340 0050 3A       		.uleb128 0x3a
+ 1341 0051 0B       		.uleb128 0xb
+ 1342 0052 3B       		.uleb128 0x3b
+ 1343 0053 0B       		.uleb128 0xb
+ 1344 0054 49       		.uleb128 0x49
+ 1345 0055 13       		.uleb128 0x13
+ 1346 0056 3F       		.uleb128 0x3f
+ 1347 0057 19       		.uleb128 0x19
+ 1348 0058 02       		.uleb128 0x2
+ 1349 0059 18       		.uleb128 0x18
+ 1350 005a 00       		.byte	0
+ 1351 005b 00       		.byte	0
+ 1352 005c 09       		.uleb128 0x9
+ 1353 005d 21       		.uleb128 0x21
+ 1354 005e 00       		.byte	0
+ 1355 005f 49       		.uleb128 0x49
+ 1356 0060 13       		.uleb128 0x13
+ 1357 0061 2F       		.uleb128 0x2f
+ 1358 0062 0B       		.uleb128 0xb
+ 1359 0063 00       		.byte	0
+ 1360 0064 00       		.byte	0
+ 1361 0065 00       		.byte	0
+ 1362              		.section	.debug_aranges,"",%progbits
+ 1363 0000 14000000 		.4byte	0x14
+ 1364 0004 0200     		.2byte	0x2
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccJLjNJy.s 			page 25
+
+
+ 1365 0006 00000000 		.4byte	.Ldebug_info0
+ 1366 000a 04       		.byte	0x4
+ 1367 000b 00       		.byte	0
+ 1368 000c 0000     		.2byte	0
+ 1369 000e 0000     		.2byte	0
+ 1370 0010 00000000 		.4byte	0
+ 1371 0014 00000000 		.4byte	0
+ 1372              		.section	.debug_line,"",%progbits
+ 1373              	.Ldebug_line0:
+ 1374 0000 27010000 		.section	.debug_str,"MS",%progbits,1
+ 1374      02002101 
+ 1374      00000201 
+ 1374      FB0E0D00 
+ 1374      01010101 
+ 1375              	.LASF9:
+ 1376 0000 5F5F7569 		.ascii	"__uint8_t\000"
+ 1376      6E74385F 
+ 1376      7400
+ 1377              	.LASF16:
+ 1378 000a 63795F6D 		.ascii	"cy_metadata\000"
+ 1378      65746164 
+ 1378      61746100 
+ 1379              	.LASF1:
+ 1380 0016 756E7369 		.ascii	"unsigned char\000"
+ 1380      676E6564 
+ 1380      20636861 
+ 1380      7200
+ 1381              	.LASF17:
+ 1382 0024 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1382      43313120 
+ 1382      352E342E 
+ 1382      31203230 
+ 1382      31363036 
+ 1383 0057 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1383      20726576 
+ 1383      6973696F 
+ 1383      6E203233 
+ 1383      37373135 
+ 1384 008a 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1384      66756E63 
+ 1384      74696F6E 
+ 1384      2D736563 
+ 1384      74696F6E 
+ 1385              	.LASF5:
+ 1386 00b2 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1386      20756E73 
+ 1386      69676E65 
+ 1386      6420696E 
+ 1386      7400
+ 1387              	.LASF3:
+ 1388 00c4 73686F72 		.ascii	"short unsigned int\000"
+ 1388      7420756E 
+ 1388      7369676E 
+ 1388      65642069 
+ 1388      6E7400
+ 1389              	.LASF13:
+ 1390 00d7 63795F6D 		.ascii	"cy_meta_custnvl\000"
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccJLjNJy.s 			page 26
+
+
+ 1390      6574615F 
+ 1390      63757374 
+ 1390      6E766C00 
+ 1391              	.LASF12:
+ 1392 00e7 63795F6D 		.ascii	"cy_meta_configecc\000"
+ 1392      6574615F 
+ 1392      636F6E66 
+ 1392      69676563 
+ 1392      6300
+ 1393              	.LASF8:
+ 1394 00f9 756E7369 		.ascii	"unsigned int\000"
+ 1394      676E6564 
+ 1394      20696E74 
+ 1394      00
+ 1395              	.LASF7:
+ 1396 0106 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1396      206C6F6E 
+ 1396      6720756E 
+ 1396      7369676E 
+ 1396      65642069 
+ 1397              	.LASF10:
+ 1398 011d 75696E74 		.ascii	"uint8_t\000"
+ 1398      385F7400 
+ 1399              	.LASF15:
+ 1400 0125 63795F6D 		.ascii	"cy_meta_flashprotect\000"
+ 1400      6574615F 
+ 1400      666C6173 
+ 1400      6870726F 
+ 1400      74656374 
+ 1401              	.LASF19:
+ 1402 013a 443A5C55 		.ascii	"D:\\User-Folders\\Documents\\E4PRJ-2021\\Skinnesyst"
+ 1402      7365722D 
+ 1402      466F6C64 
+ 1402      6572735C 
+ 1402      446F6375 
+ 1403 0169 656D5C52 		.ascii	"em\\RotaryEncoderWorkspace\\RotaryEncoder1.cydsn\000"
+ 1403      6F746172 
+ 1403      79456E63 
+ 1403      6F646572 
+ 1403      576F726B 
+ 1404              	.LASF14:
+ 1405 0198 63795F6D 		.ascii	"cy_meta_wonvl\000"
+ 1405      6574615F 
+ 1405      776F6E76 
+ 1405      6C00
+ 1406              	.LASF11:
+ 1407 01a6 73697A65 		.ascii	"sizetype\000"
+ 1407      74797065 
+ 1407      00
+ 1408              	.LASF6:
+ 1409 01af 6C6F6E67 		.ascii	"long long int\000"
+ 1409      206C6F6E 
+ 1409      6720696E 
+ 1409      7400
+ 1410              	.LASF2:
+ 1411 01bd 73686F72 		.ascii	"short int\000"
+ 1411      7420696E 
+ARM GAS  C:\Users\Oskari\AppData\Local\Temp\ccJLjNJy.s 			page 27
+
+
+ 1411      7400
+ 1412              	.LASF4:
+ 1413 01c7 6C6F6E67 		.ascii	"long int\000"
+ 1413      20696E74 
+ 1413      00
+ 1414              	.LASF0:
+ 1415 01d0 7369676E 		.ascii	"signed char\000"
+ 1415      65642063 
+ 1415      68617200 
+ 1416              	.LASF18:
+ 1417 01dc 47656E65 		.ascii	"Generated_Source\\PSoC5\\cymetadata.c\000"
+ 1417      72617465 
+ 1417      645F536F 
+ 1417      75726365 
+ 1417      5C50536F 
+ 1418              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
