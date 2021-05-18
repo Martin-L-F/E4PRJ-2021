@@ -17,13 +17,13 @@ typedef  unsigned int uint32_t;
 #define GPIO_OFFSET             0x200000
 #define UART_OFFSET             0x20100
 /* BCM2835 p. 91 ff. */
-#define GPFSEL1_addr            0x04             //GPFSEL: define operation of the general-purpose I/O, GPFSEL1 Address offset for GPIO 10-19, 32-bit 
-#define UART_DR                 0x0     
-#define UART_FR                 0x18
-#define UART_IBRD               0x24
-#define UART_FBRD               0x28
-#define UART_LCRH               0x2c
-#define UART_CR                 0x30
+#define GPFSEL1                 0x04            //GPFSEL: define operation of the general-purpose I/O, GPFSEL1 Address offset for GPIO 10-19, 32-bit 
+#define UART_DR                 0x0             //DR: Data Register
+#define UART_FR                 0x18            //FR: Flag register
+#define UART_IBRD               0x24            //IBRD: Integer Baude Rate Divisor 
+#define UART_FBRD               0x28            //FBRD: Fractional Baude Rate Divisor
+#define UART_LCRH               0x2c            //LCRH: Line Control Register
+#define UART_CR                 0x30            //CR: Control Register
 #define WORD_SIZE               4
 #define DEBUG                   0
 
@@ -31,7 +31,8 @@ void reg_setvalue(volatile uint32_t * addr, uint32_t value, uint32_t bits = 0, u
 
 int main(int argc, char **argv)
 {
-    volatile uint32_t* virt_UART_IBRD, virt_FBRD, virt_UART_LCRH, virt_UART_CR, virt_UART_FR;
+    volatile uint32_t* virt_UART_IBRD, virt_UART_FBRD, virt_UART_LCRH, virt_UART_CR, virt_UART_FR;
+    volatile uint32_t* virt_gpio, virt_uart;
     volatile uint32_t* map_base, *virt_base;
     int fd, count = 2400;
 
@@ -46,7 +47,15 @@ int main(int argc, char **argv)
 
     //Defining pointers to work in memory
     //Eksempel:
-    //virt_gpio = map_base + GPIO_OFFSET/WORD_SIZE;
+    virt_gpio = map_base + GPIO_OFFSET/WORD_SIZE;
+    virt_sel1 = virt_gpio + GPFSEL1_addr/WORD_SIZE;
+
+    virt_uart = map_base + UART_OFFSET/WORD_SIZE;
+    virt_UART_IBRD = virt_uart + UART_IBRD/WORD_SIZE;
+    virt_UART_FBRD = virt_uart + UART_FBRD/WORD_SIZE;
+    virt_UART_LCRH = virt_uart + UART_LCRH/WORD_SIZE;
+    virt_UART_CR = virt_uart + virt_UART_CR/WORD_SIZE;
+    virt_UART_FR = virt_uart + virt_UART_FR/WORD_SIZE;
 
     //*** INITIALISERING ***
 
@@ -62,7 +71,7 @@ int main(int argc, char **argv)
     //Set Baud-rate: 9600 bit/s 
     //BAUDDIV = (FUARTCLK/(16*Baud-rate)) --> BAUDDIV = 2604
     reg_setvalue(virt_UART_IBRD, 2604, 16);       //Integer part of baud divisor
-    //reg_setvalue(virt_FBRD, 0, 6);       //Fractional part of baud divisor
+    //reg_setvalue(virt_UART_FBRD, 0, 6);       //Fractional part of baud divisor
 
     //UART Line Control Register
     //bit1:     0b0 (No parity)
