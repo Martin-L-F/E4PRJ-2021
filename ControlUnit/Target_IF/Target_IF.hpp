@@ -1,15 +1,3 @@
-<<<<<<< HEAD
-#include "UART_IF.hpp"
-
-class Target_IF : UART_IF
-{
-public:
-    void startDetection(int);
-    void stopDetection();
-    int updateScore(int);
-private:
-    UART_IF UARTobj_;
-=======
 #pragma once
 #include "UART.hpp"
 #include <stdio.h>
@@ -27,5 +15,4 @@ public:
     int updateScore(int user);
 private:
     UART UARTobj_;
->>>>>>> dc75ac34de747faa3793aa28dbceb760239f8254
 };

@@ -1,17 +1,9 @@
 # define the command that we use for compilation
-<<<<<<< HEAD
-SOURCES = main.cpp MsgQueue.cpp F_thread.cpp ScopedLocker.cpp
-CXXFLAGS= -I. -pthread -Wall
-EXE=main_exe
-MKDIR=@mkdir -p $(@D)
-ARCH=host
-=======
 SOURCES = test.cpp Target_IF.cpp UART.cpp
 CXXFLAGS= -I. -pthread -Wall
 EXE=test_exe
 MKDIR=@mkdir -p $(@D)
 ARCH=target
->>>>>>> dc75ac34de747faa3793aa28dbceb760239f8254
 
 #Making for host
 #> make ARCH=host
