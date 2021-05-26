@@ -4,11 +4,10 @@ int main(int argc, char **argv)
 {
     int userInput = atoi(argv[1]);
 
-    printf("%s\n", argv[1]);
+    printf("PWM: %s\n", argv[1]);
 
-    Laser_IF laserObj;
 
-    laserObj.setFrequency(userInput);
+    Laser_IF laserObj(userInput);
 
     laserObj.shootLaser();
 

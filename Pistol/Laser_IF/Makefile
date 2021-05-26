@@ -2,7 +2,7 @@ CXX = arm-rpizw-g++
 SOURCES = main.cpp Laser_IF.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
 DEPS = $(SOURCES:.cpp=.d)
-EXE = test_laser_class
+EXE = test_laser_class_v1
 CXXFLAGS = -I.
 
 $(EXE): $(DEPS) $(OBJECTS) # << Check the $(DEPS) new dependency
