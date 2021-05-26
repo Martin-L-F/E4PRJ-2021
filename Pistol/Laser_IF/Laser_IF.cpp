@@ -18,63 +18,28 @@
 #define WORD_SIZE               4
 #define DEBUG                   0
 
-typedef  unsigned int uint32_t;
-
 void reg_setvalue(volatile uint32_t * addr, uint32_t value, uint32_t clearBits, uint32_t shift = 0, uint32_t password = 0);
 
-Laser_IF::Laser_IF()
+Laser_IF::Laser_IF(int freq)
 {
-    _frequency = 0;
-    _PWMcounter = 0;
-    _shotLength = 500000;
-}
+    setFrequency(freq);
 
-void Laser_IF::setFrequency(int freq)
-{
-    if( 0 < freq && freq <= 2000){
-        _frequency = freq;
-        setPWMcounter();
-    }
-    else
-        printf("ERROR: PWM frequency out of range\n");
-}
-
-void Laser_IF::setPWMcounter()
-{
-    //int clk_freq = 19200000;
-    //int clk_div = 16;
-    int current_clk_freq = 1200000;
-
-    _PWMcounter = current_clk_freq/_frequency;
-    printf("_PWMcounter = %i\n", _PWMcounter);
-}
-
-void Laser_IF::shootLaser()
-{
-    volatile uint32_t* virt_cm, *virt_gpio, *virt_pwm, *virt_gpio_sel1, *virt_pwm_ctl, *virt_pwm_range, *virt_pwm_data, *virt_cm_pwm_div, *virt_cm_pwm_ctl, *virt_gpio_set0, *virt_gpio_clr0;
-    volatile uint32_t* map_base, *virt_base;
+    volatile uint32_t* map_base;
     int fd;
-
-    // printf("Peripherals base (word): %x\n", (uint32_t)BCM_2835_PERIPH_BASE);
-    // printf("GPIO base: %x\n", GPIO_OFFSET);
-    // printf("PWM base: %x\n", PWM_OFFSET);
-    // printf("CLK base: %x\n", CM_OFFSET);
 
     fd = open("/dev/mem", O_RDWR | O_SYNC, 0);
 
     map_base = (uint32_t *)mmap(0, BCM_2835_PERIPH_SIZE, PROT_READ | PROT_WRITE, MAP_SHARED, fd, BCM_2835_PERIPH_BASE);
 
     //Defining pointers to work in memory
-    {
-        virt_gpio = map_base + GPIO_OFFSET/WORD_SIZE;
-        virt_pwm = map_base + PWM_OFFSET/WORD_SIZE;
-        virt_cm_pwm_div = map_base + CM_PWM_DIV_OFFSET/WORD_SIZE;
-        virt_cm_pwm_ctl = map_base + CM_PWM_CTL_OFFSET/WORD_SIZE;
-        virt_gpio_sel1 = virt_gpio + GPFSEL1_addr/WORD_SIZE;    //set pin operation 
-        virt_pwm_ctl = virt_pwm + PWM_CTRL_OFFSET/WORD_SIZE;
-        virt_pwm_range = virt_pwm + PWM_RANGE_OFFSET/WORD_SIZE;
-        virt_pwm_data = virt_pwm + PWM_DATA_OFFSET/WORD_SIZE;
-    }
+    virt_gpio = map_base + GPIO_OFFSET/WORD_SIZE;
+    virt_pwm = map_base + PWM_OFFSET/WORD_SIZE;
+    virt_cm_pwm_div = map_base + CM_PWM_DIV_OFFSET/WORD_SIZE;
+    virt_cm_pwm_ctl = map_base + CM_PWM_CTL_OFFSET/WORD_SIZE;
+    virt_gpio_sel1 = virt_gpio + GPFSEL1_addr/WORD_SIZE;    //set pin operation 
+    virt_pwm_ctl = virt_pwm + PWM_CTRL_OFFSET/WORD_SIZE;
+    virt_pwm_range = virt_pwm + PWM_RANGE_OFFSET/WORD_SIZE;
+    virt_pwm_data = virt_pwm + PWM_DATA_OFFSET/WORD_SIZE;
 
     __sync_synchronize();
 
@@ -102,15 +67,62 @@ void Laser_IF::shootLaser()
 
     __sync_synchronize();
 
+        //Sæt PWM range 2, max 32-bit (p. 147)    
+    reg_setvalue(virt_pwm_range, PWMcounter_, 32);
+
+    __sync_synchronize();
+
+    //Sæt PWM data2 = 0 (OCRn)
+    reg_setvalue(virt_pwm_data, 0, 32);
+
+    __sync_synchronize();
+
+    munmap(&map_base, BCM_2835_PERIPH_SIZE);
+}
+
+void Laser_IF::setFrequency(int freq)
+{
+    if( 0 < freq && freq <= 2000){
+        frequency_ = freq;
+        setPWMcounter();
+    }
+    else {
+        frequency_ = 500;   //default value
+        setPWMcounter();
+        printf("ERROR: PWM frequency out of range, range 1-2000Hz\n");
+    }
+}
+
+void Laser_IF::setPWMcounter()
+{
+    //clk_freq = 19.2MHz, clk_div = 16;
+    //current_clk_freq = clk_freq/clk_div
+    int current_clk_freq = 1200000;     
+
+    PWMcounter_ = current_clk_freq/frequency_;
+    //printf("PWMcounter_ = %i\n", PWMcounter_);
+}
+
+void Laser_IF::shootLaser()
+{
+    volatile uint32_t* map_base;
+    int fd;
+
+    fd = open("/dev/mem", O_RDWR | O_SYNC, 0);
+
+    map_base = (uint32_t *)mmap(0, BCM_2835_PERIPH_SIZE, PROT_READ | PROT_WRITE, MAP_SHARED, fd, BCM_2835_PERIPH_BASE);
+
+    __sync_synchronize();
+
     //Sæt PWM range 2, max 32-bit (p. 147)    
-    reg_setvalue(virt_pwm_range, _PWMcounter, 32);
+    reg_setvalue(virt_pwm_range, PWMcounter_, 32);
 
     __sync_synchronize();
 
     //Sæt PWM data2 (OCRn)
-    reg_setvalue(virt_pwm_data, _PWMcounter / 2, 32);
+    reg_setvalue(virt_pwm_data, PWMcounter_ / 2, 32);
 
-    usleep(_shotLength);
+    usleep(shotLength_);
 
     //Sæt PWM data2 = 0 (OCRn)
     reg_setvalue(virt_pwm_data, 0, 32);
@@ -129,6 +141,3 @@ void reg_setvalue(volatile uint32_t * addr, uint32_t value, uint32_t clearBits, 
 
 	*addr = password | (*addr | (value << shift));
 }
-
-//printf("Value: %x at %p\n", *addr, addr);
-//printf("bcm2835_peri_write_nb paddr %08X, value %08X\n", (unsigned) paddr, value);
