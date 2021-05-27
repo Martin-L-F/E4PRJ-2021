@@ -1,6 +1,5 @@
 #include "Target_IF.hpp"
 #include "UART/MsgQueue.hpp"
-#include "threads.hpp"
 #include "ControlUnit_Controller.hpp"
 
 #include <pthread.h>
@@ -9,17 +8,11 @@ using namespace std;
 
 
 int main()
-{
-    pthread_t UARTReceive, UARTDispatcher;
-    
+{    
     ControlUnit_Controller controlObj;
     
-  
 
-    pthread_create(&UARTReceive, NULL, funcTargetIF_UARTReceive, &controlObj);
-    pthread_create(&UARTDispatcher, NULL, funcTargetIF_Dispatcher, &controlObj);
-
-        //Test
+    //Test
     printf("Program started\n");
 
     controlObj.TargetObj.startDetection(2);
@@ -29,7 +22,6 @@ int main()
     printf("Stop detection\n");
     
     sleep(2);
-    //pthread_join( UART_rx, NULL );
 
     return 0;
 }

@@ -1,5 +1,5 @@
 # define the command that we use for compilation
-SOURCES = test.cpp Target_IF.cpp UART/UART.cpp UART/MsgQueue.cpp UART/ScopedLocker.cpp threads.cpp
+SOURCES = testTarget.cpp Target_IF.cpp RailSystem_IF.cpp UART/UART.cpp UART/MsgQueue.cpp UART/ScopedLocker.cpp UART/Rx_data.cpp
 CXXFLAGS= -I. -pthread -Wall
 EXE=test_exe
 MKDIR=@mkdir -p $(@D)
