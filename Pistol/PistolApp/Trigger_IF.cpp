@@ -24,10 +24,7 @@ inline void Trigger_IF::trigger(void)
         while (triggerInterupt.is_open())
         {
             memblock = new char[1];
-            while (memblock[0] == NULL)
-            {
-                triggerInterupt.read(memblock, 1);
-            }
+            triggerInterupt.read(memblock, 1);
 
             do
             {
@@ -40,18 +37,7 @@ inline void Trigger_IF::trigger(void)
                     std::cout << "[Trigger][WARN] No callback for: Fire" << std::endl;
                 }
 
-                std::this_thread::sleep_for(std::chrono::milliseconds(500));
-
-                if (_endOfFireCallback != nullptr)
-                {
-                    _endOfFireCallback();
-                }
-                else
-                {
-                    std::cout << "[Trigger][WARN] No callback for: EndOfFire" << std::endl;
-                }
-
-                std::this_thread::sleep_for(std::chrono::milliseconds(500));
+                std::this_thread::sleep_for(std::chrono::milliseconds(1000));
             } while (digitalRead(21) == 1);
         }
         std::cout << "[Trigger][WARN] Could not open filestream. Restarting service in 5 seconds" << std::endl;

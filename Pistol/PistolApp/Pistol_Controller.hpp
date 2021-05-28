@@ -14,7 +14,6 @@ public:
     Pistol_Controller()
     {
         _trigger.addFireCallback((std::function<void()>)std::bind(&Pistol_Controller::startShot, this));
-        _trigger.addEndOfFireCallback((std::function<void()>)std::bind(&Pistol_Controller::endShot, this));
 
         _magasin.addMagSwitchCallback((std::function<void()>)std::bind(&Pistol_Controller::magSwitched, this));
         _magasin.setMag(1);
@@ -31,11 +30,6 @@ private:
         //Reset timer
         //Fire laser
         //Play sound
-    }
-
-    void endShot()
-    {
-        std::cout << "[CTLR][INFO] End of fire" << std::endl;
     }
 
     void magSwitched()

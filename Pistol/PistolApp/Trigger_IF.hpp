@@ -19,19 +19,9 @@ public:
         _fireCallback = callback;
     }
 
-    void addEndOfFireCallback(std::function<void()> callback)
-    {
-        if (_endOfFireCallback != nullptr)
-        {
-            std::cout << "[Trigger][WARN] Overriding callback for: EndOfFire" << std::endl;
-        }
-        _endOfFireCallback = callback;
-    }
-
 private:
     void trigger(void);
 
     std::thread _interuptThread;
     std::function<void()> _fireCallback = nullptr;
-    std::function<void()> _endOfFireCallback = nullptr;
 };
