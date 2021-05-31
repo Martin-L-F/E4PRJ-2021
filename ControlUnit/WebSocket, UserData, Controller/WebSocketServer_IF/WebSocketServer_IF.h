@@ -152,7 +152,7 @@ public:
 			res[0]->send(message);
 		}
 		else {
-			std::cout << "[WebSocketServer_IF][WARN] Canceled broadcast of information. No primary browser was found" << std::endl;
+			std::cout << "[WebSocketServer_IF][WARN] Canceled broadcast of information. No primary browser was found." << std::endl;
 		}
 	}
 
@@ -221,8 +221,7 @@ private:
 			// Connection pointer
 			std::shared_ptr<websocketpp::connection<websocketpp::config::asio>> connectionPointer = m_endpoint.get_con_from_hdl(hdl);
 
-			std::cout << std::endl
-				<< "[WebSocketServer_IF][INFO] Message recieved from: " << connectionPointer->get_remote_endpoint() << " | saying: " << msg->get_payload() << std::endl;
+			std::cout << "[WebSocketServer_IF][INFO] Message recieved from: " << connectionPointer->get_remote_endpoint() << " | saying: " << msg->get_payload() << std::endl;
 
 			// Find connection from connectionlist
 			Client* con = nullptr;
@@ -235,7 +234,8 @@ private:
 			}
 			if (con == nullptr)
 			{
-				std::cout << "[WebSocketServer_IF][ERROR] Connection was not found in connectionlist. Terminating handle" << std::endl;
+				std::cout << "[WebSocketServer_IF][ERROR] Connection was not found in connectionlist. Terminating handle." << std::endl;
+				std::cout << std::endl;
 				return;
 			}
 
@@ -248,6 +248,7 @@ private:
 			catch (const std::exception& ex)
 			{
 				std::cout << "[WebSocketServer_IF][ERROR] Could not pass incomming message as JSON. Terminating handle. Errordetails: " << ex.what() << std::endl;
+				std::cout << std::endl;
 				return;
 			}
 
@@ -260,6 +261,8 @@ private:
 				catch (const std::exception& ex)
 				{
 					std::cout << "[WebSocketServer_IF][ERROR] Fatal error in message handle callback. Terminating handle. Errordetails: " << ex.what() << std::endl;
+					std::cout << std::endl;
+					return;
 				}
 
 			}
@@ -278,7 +281,10 @@ private:
 		catch (const std::exception& ex)
 		{
 			std::cout << "[WebSocketServer_IF][ERROR] Fatal error on incomming message. Terminating handle. Errordetails: " << ex.what() << std::endl;
+			std::cout << std::endl;
+			return;
 		}
+		std::cout << std::endl;
 	}
 
 	// Open handler
@@ -291,7 +297,7 @@ private:
 
 		// Adds the pointer to a vector for later use
 		json metadata;
-		metadata["ID"] = connectionPointer->get_remote_endpoint().substr(connectionPointer->get_remote_endpoint().find_last_of(":"));
+		metadata["ID"] = connectionPointer->get_remote_endpoint().substr(connectionPointer->get_remote_endpoint().find_last_of(":") + 1);
 		connections.push_back({ connectionPointer, time(0), metadata });
 
 		if (onConnected != nullptr) {
@@ -300,6 +306,8 @@ private:
 		else {
 			std::cout << "[WebSocketServer_IF][WARN] No handler for event 'onConnected' found." << std::endl;
 		}
+
+		std::cout << std::endl;
 	}
 
 	// Close handler
@@ -312,11 +320,12 @@ private:
 		{
 			if ((*it).is(pointer))
 			{
+				std::cout << "[WebSocketServer_IF][INFO] Client of type: " << it->getType() << " disconnected." << std::endl;
 				if (onDisconnected != nullptr) {
 					onDisconnected(&(*it));
 				}
 				else {
-					std::cout << "[WebSocketServer_IF][WARN] No handler for event 'onConnected' found." << std::endl;
+					std::cout << "[WebSocketServer_IF][WARN] No handler for event 'onDisconnected' found." << std::endl;
 				}
 
 				if ((*it).getType() == Client::connectionType::primaryBrowser) {
@@ -335,6 +344,7 @@ private:
 		}
 
 		broadcastConnections();
+		std::cout << std::endl;
 	}
 
 	// Handler for HTTP requests
@@ -358,19 +368,11 @@ private:
 
 		file.open(filePath.c_str(), std::ios::in);
 		if (!file) {
-			std::cout << "[WebSocketServer_IF][WARN] HTTP content could not be found. Serving 404 instead. Missing content: '" << filename << "'." << std::endl;
-			// 404 error
-			std::stringstream ss;
-
-			ss << "<!doctype html><html><head>"
-				<< "<title>Error 404 (Resource not found)</title><body>"
-				<< "<h1>Error 404</h1>"
-				<< "<p>The requested URL " << filename << " was not found on this server.</p>"
-				<< "</body></head></html>";
-
-			con->set_body(ss.str());
-			con->set_status(websocketpp::http::status_code::not_found);
-			return;
+			filePath = httpfilelocation + "index.html";
+			file.open(filePath.c_str(), std::ios::in);
+			if (!file) {
+				return;
+			}
 		}
 
 		file.seekg(0, std::ios::end);
@@ -383,6 +385,7 @@ private:
 		con->set_body(response);
 		con->set_status(websocketpp::http::status_code::ok);
 
+		std::cout << std::endl;
 	}
 
 	void readConfigfile() {
@@ -396,7 +399,7 @@ private:
 
 				if (config.is_object())
 				{
-					// Get broadcastinterval
+					// Get port
 					if (config["WebSocketServer_IF"]["port"].is_number())
 					{
 						port = config["WebSocketServer_IF"]["port"];
@@ -439,5 +442,7 @@ private:
 			std::cout << "[WebSocketServer_IF][WARN] An error occurred while reading configurationfile." << std::endl;
 			std::cout << "[WebSocketServer_IF][WARN] " << ex.what() << std::endl;
 		}
+
+		std::cout << std::endl;
 	}
 };

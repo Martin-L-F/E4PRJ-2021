@@ -1,0 +1,15 @@
+{
+    "users": [
+        {
+            "email": "john@doe.com",
+            "highscore": {
+                "easy": 0,
+                "hard": 0,
+                "medium": 0
+            },
+            "metadata": null,
+            "name": "John Doe",
+            "password": "secret"
+        }
+    ]
+}

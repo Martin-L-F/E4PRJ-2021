@@ -24,7 +24,7 @@ public:
 		this->client = client;
 		requestsReply = this->content["callback"].is_primitive() && !this->content["callback"].is_null();
 		if (requestsReply) {
-			response["type"] = "callback";
+			response["type"] = "Callback";
 			response["callback"] = this->content["callback"];
 		}
 	}
@@ -37,7 +37,7 @@ public:
 		this->client = client;
 		requestsReply = this->content["callback"].is_primitive() && !this->content["callback"].is_null();
 		if (requestsReply) {
-			response["type"] = "callback";
+			response["type"] = "Callback";
 			response["callback"] = this->content["callback"];
 		}
 	}
