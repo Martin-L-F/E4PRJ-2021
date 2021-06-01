@@ -50,7 +50,7 @@ private:
 	}
 
 	// Handler for incomming WebSocket messages.
-	void onWebSocketMessage(Message *message)
+	void onWebSocketMessage(WebSocket_Message *message)
 	{
 		if (message->getContent()["type"] == "RequestConnectionVerification")
 		{

@@ -15,7 +15,7 @@ public:
 	{
 		server.add_onMessage_Handler(std::bind(&ControlUnit_Controller::onWebSocketMessage, this, std::placeholders::_1));
 
-		TargetObj.addCallback(std::bind(&ControlUnit_Controller::shotDetected, this, this ::placeholders::_1));
+		TargetObj.addCallback(std::bind(&ControlUnit_Controller::shotDetected, this, std::placeholders::_1));
 		RailSystemObj.addCallback(std::bind(&ControlUnit_Controller::CalibrateComplete, this));
 	}
 
@@ -36,7 +36,7 @@ private:
 	}
 	void shotDetected(int player)
 	{
-		updateScore(player, 1);
+		updateScore(player, 5);
 	}
 
 	// Transmits all data for signed in users to the primary browser.
@@ -64,7 +64,7 @@ private:
 	}
 
 	// Handler for incomming WebSocket messages.
-	void onWebSocketMessage(Message *message)
+	void onWebSocketMessage(WebSocket_Message *message)
 	{
 		if (message->getContent()["type"] == "RequestConnectionVerification")
 		{
