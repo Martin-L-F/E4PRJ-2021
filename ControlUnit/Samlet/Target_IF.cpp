@@ -14,10 +14,6 @@ Target_IF::Target_IF()
     UARTobj_.addCallback(bind(&Target_IF::UARTDispatcher, this, placeholders::_1, placeholders::_2));
 }
 
-Target_IF::~Target_IF()
-{
-}
-
 void Target_IF::startDetection(int numberOfPlayers)
 {
     uint8_t msg[3];
@@ -41,18 +37,13 @@ void Target_IF::stopDetection()
 
 void Target_IF::UARTDispatcher(unsigned id, Message *msg)
 {
-    if (debug_UART)
-        printf("Target Dispatcher id: %x\n", id);
-
     switch (id)
     {
     case (unsigned)0xD5:
         updateScore(msg);
         break;
     default:
-        if (debug_UART)
-            cout << "Target Dispatcher: unknown id" << endl;
-        ;
+        break;
     }
 }
 

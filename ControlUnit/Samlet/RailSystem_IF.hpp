@@ -20,14 +20,13 @@ class RailSystem_IF
 {
 public:
     RailSystem_IF();
-    ~RailSystem_IF();
     void startMoving(int);
     void resetPosition(); //Start kalibrate
     void stopMoving();
     void UARTDispatcher(unsigned id, Message *msg);
-    int CalibrateDone(Message *user); //Handler
+    int CalibrateDone(Message *user);
     void addCallback(function<void()> cb);
-    UART *getUARTobj(); //test
+
 private:
     void readConfigfile();
     UART UARTobj_;

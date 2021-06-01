@@ -10,6 +10,7 @@
 #include <thread>
 #include "WebSocketServer_IF/WebSocketServer_IF.h"
 #include "UserData_Storage/UserData_Storage.hpp"
+#include "Speaker_IF.h"
 
 using namespace std;
 using namespace chrono;
@@ -355,6 +356,7 @@ private:
 				RailSystemObj.startMoving(3);
 			}
 			message->addToResponse("{\"status\": 200}"_json);
+			speaker.playSound("CountdownOver");
 		}
 
 		else
@@ -434,6 +436,8 @@ private:
 
 		TargetObj.stopDetection();
 
+		speaker.playSound("GameIsOver");
+
 		auto res = server.getConnectionsOfType(Client::connectionType::primaryBrowser);
 		if (res.size() > 0)
 		{
@@ -480,6 +484,8 @@ private:
 
 	Target_IF TargetObj;
 	RailSystem_IF RailSystemObj;
+
+	Speaker_IF speaker;
 
 	struct SignedInUser
 	{

@@ -1,4 +1,4 @@
-SOURCES=main.cpp RailSystem_IF.cpp Target_IF.cpp UART/Rx_data.cpp UART/MsgQueue.cpp UART/ScopedLocker.cpp UART/UART.cpp
+SOURCES=main.cpp RailSystem_IF.cpp Target_IF.cpp UART/Rx_data.cpp UART/MsgQueue.cpp UART/ScopedLocker.cpp UART/UART.cpp Speaker_IF.cpp
 OBJECTS=$(addprefix  $(BUILD_DIR), $(SOURCES:.cpp=.o))
 DEPS=$(SOURCES:.cpp=.d)
 EXE=ControlUnitApp

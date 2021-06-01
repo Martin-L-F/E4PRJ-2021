@@ -20,11 +20,10 @@ class Target_IF
 {
 public:
     Target_IF();
-    ~Target_IF();
     void startDetection(int numberOfPlayers);
     void stopDetection();
     void UARTDispatcher(unsigned id, Message *msg);
-    int updateScore(Message *user); //Handler
+    int updateScore(Message *user);
     void addCallback(function<void(int)> cb);
 
 private:
