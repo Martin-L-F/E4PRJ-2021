@@ -1,6 +1,7 @@
 #include "ControlUnit_Controller.hpp"
 
-int main() {
+int main()
+{
 	std::cout << "[INFO] Initiating system" << std::endl;
 	ControlUnit_Controller ControlUnit;
 	ControlUnit.run();

@@ -1,3 +1,8 @@
+#pragma once
+
+#include "Target_IF.hpp"
+#include "RailSystem_IF.hpp"
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -5,15 +10,16 @@
 #include <thread>
 #include "WebSocketServer_IF/WebSocketServer_IF.h"
 #include "UserData_Storage/UserData_Storage.hpp"
-#include "Target_IF.hpp"
-#include "RailSystem_IF.hpp"
 
+using namespace std;
+using namespace chrono;
 class ControlUnit_Controller
 {
 public:
 	ControlUnit_Controller()
 	{
 		server.add_onMessage_Handler(std::bind(&ControlUnit_Controller::onWebSocketMessage, this, std::placeholders::_1));
+		server.add_onDisconnected_Handler(std::bind(&ControlUnit_Controller::onWebSocketDisconnected, this, std::placeholders::_1));
 
 		TargetObj.addCallback(std::bind(&ControlUnit_Controller::shotDetected, this, std::placeholders::_1));
 		RailSystemObj.addCallback(std::bind(&ControlUnit_Controller::CalibrateComplete, this));
@@ -43,7 +49,7 @@ private:
 	void broadcastSignedInUsers()
 	{
 		auto res = server.getConnectionsOfType(Client::connectionType::primaryBrowser);
-		if (res.size() > 0)
+		for (auto &client : res)
 		{
 			json message;
 			message["type"] = "SignedInUsers";
@@ -59,7 +65,7 @@ private:
 				}
 				message["data"].push_back(item);
 			}
-			res[0]->send(message);
+			client->send(message);
 		}
 	}
 
@@ -274,12 +280,9 @@ private:
 		{
 			if (message->messageRequiresType(Client::connectionType::primaryBrowser))
 				return;
-			message->addToResponse("{\"status\": 501}"_json);
+			message->addToResponse("{\"status\": 200}"_json);
 			readyAllPistols();
-
-			/*
-			  TO-DO: Add more functionality here...
-			*/
+			RailSystemObj.resetPosition();
 		}
 
 		else if (message->getContent()["type"] == "StartGame")
@@ -319,10 +322,6 @@ private:
 					currentGameDifficulty = message->getContent()["difficulty"];
 					armAllPistols(currentGameDifficulty);
 					message->addToResponse("{\"status\": 200}"_json);
-
-					/*
-					  TO-DO: Add more functionality here...
-					*/
 				}
 				else
 				{
@@ -341,25 +340,36 @@ private:
 		{
 			if (message->messageRequiresType(Client::connectionType::primaryBrowser))
 				return;
-			message->addToResponse("{\"status\": 501}"_json);
-
-			/*
-			  TO-DO: Add more functionality here...
-			*/
-		}
-
-		else if (message->getContent()["type"] == "")
-		{
-		}
-
-		else if (message->getContent()["type"] == "")
-		{
+			gameStartetAt = time(0);
+			TargetObj.startDetection(signedInUsers.size());
+			if (currentGameDifficulty == "easy")
+			{
+				RailSystemObj.startMoving(1);
+			}
+			else if (currentGameDifficulty == "medium")
+			{
+				RailSystemObj.startMoving(2);
+			}
+			else if (currentGameDifficulty == "hard")
+			{
+				RailSystemObj.startMoving(3);
+			}
+			message->addToResponse("{\"status\": 200}"_json);
 		}
 
 		else
 		{
 			std::cout << "[ControlUnit_Controller][WARN] Unresolved message type" << std::endl;
 			message->addToResponse("{\"status\": 400}"_json);
+		}
+	}
+
+	void onWebSocketDisconnected(Client *client)
+	{
+		if (client->getType() == Client::primaryBrowser)
+		{
+			std::cout << "[ControlUnit_Controller][WARN] Primary browser disconnected" << std::endl;
+			broadcastSignedInUsers();
 		}
 	}
 
@@ -422,6 +432,8 @@ private:
 	{
 		disarmAllPistols();
 
+		TargetObj.stopDetection();
+
 		auto res = server.getConnectionsOfType(Client::connectionType::primaryBrowser);
 		if (res.size() > 0)
 		{
@@ -432,7 +444,10 @@ private:
 
 		for (auto &user : signedInUsers)
 		{
-			user.user->updateScore(user.curentScore, currentGameDifficulty);
+			if (user.isWinner == true)
+			{
+				user.user->updateScore(abs(difftime(time(0), gameStartetAt)) * -1, currentGameDifficulty);
+			}
 			user.isWinner = false;
 		}
 		currentGameDifficulty = "";
@@ -475,4 +490,5 @@ private:
 	std::vector<SignedInUser> signedInUsers;
 	std::string currentGameDifficulty = "";
 	int maxPoints = 100;
+	std::time_t gameStartetAt;
 };

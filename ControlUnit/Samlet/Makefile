@@ -1,4 +1,4 @@
-SOURCES=main.cpp RailSystem_IF.cpp Target_IF.cpp UART/Rx_data.cpp UART/ScopedLocker.cpp UART/UART.cpp
+SOURCES=main.cpp RailSystem_IF.cpp Target_IF.cpp UART/Rx_data.cpp UART/MsgQueue.cpp UART/ScopedLocker.cpp UART/UART.cpp
 OBJECTS=$(addprefix  $(BUILD_DIR), $(SOURCES:.cpp=.o))
 DEPS=$(SOURCES:.cpp=.d)
 EXE=ControlUnitApp
@@ -51,3 +51,11 @@ tidy: $(SOURCES:.cpp=.tidy)
 	@echo "Tidying file '$<'"...
 	@clang-tidy $< -- $(CXXFLAGS)
 	@echo "" > $@
+
+# we'll make our cleaning target more powerful
+# we remove the targets that we build by default and also
+# remove all object files
+.PHONY: clean
+clean:	##Clean up your executeable file and all .o and .d files
+	rm -f $(EXE) $(BUILD_DIR)*.o $(BUILD_DIR)*.d
+	rm -f $(EXE) UART/*.o UART/*.d

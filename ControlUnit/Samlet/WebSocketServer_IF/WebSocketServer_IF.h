@@ -348,14 +348,6 @@ private:
 			if ((*it).is(pointer))
 			{
 				std::cout << "[WebSocketServer_IF][INFO] Client of type: " << it->getType() << " disconnected." << std::endl;
-				if (onDisconnected != nullptr)
-				{
-					onDisconnected(&(*it));
-				}
-				else
-				{
-					std::cout << "[WebSocketServer_IF][WARN] No handler for event 'onDisconnected' found." << std::endl;
-				}
 
 				if ((*it).getType() == Client::connectionType::primaryBrowser)
 				{
@@ -369,6 +361,14 @@ private:
 					{
 						std::cout << "[WebSocketServer_IF][WARN] No new primary browser was found" << std::endl;
 					}
+				}
+				if (onDisconnected != nullptr)
+				{
+					onDisconnected(&(*it));
+				}
+				else
+				{
+					std::cout << "[WebSocketServer_IF][WARN] No handler for event 'onDisconnected' found." << std::endl;
 				}
 				connections.erase(it);
 				break;
@@ -460,8 +460,6 @@ private:
 					{
 						std::cout << "[WebSocketServer_IF][WARN] Syntaxerror in configurationfile" << std::endl;
 					}
-
-					// Add more config here.
 
 					std::cout << "[WebSocketServer_IF][INFO] End of configurationfile." << std::endl;
 				}

@@ -1,0 +1,11 @@
+{
+    "Target_IF": {
+        "device": "0"
+    },
+    "RailSystem_IF": {
+        "device": "0"
+    },
+    "WebSocketServer_IF": {
+        "port": 80
+    }
+}

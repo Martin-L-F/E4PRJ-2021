@@ -1,22 +1,21 @@
 #pragma once
 #include <iostream>
-#include <fstream>
-#include <mutex>
 
 #include "json.hpp"
 
 using json = nlohmann::json;
 
-
-class User_t {
+class User_t
+{
 public:
 	// Default constructor for user_t
-	User_t() {
-
+	User_t()
+	{
 	}
 
 	// Constructor with values for user_t
-	User_t(std::string name, std::string email, std::string password, int score_easy, int score_medium, int score_hard, json metadata = NULL) {
+	User_t(std::string name, std::string email, std::string password, int score_easy, int score_medium, int score_hard, json metadata = NULL)
+	{
 		this->name = name;
 		this->email = email;
 		this->password = password;
@@ -27,7 +26,8 @@ public:
 	}
 
 	// Constructor with values for user_t
-	User_t(std::string name, std::string email, std::string password, json metadata = nullptr) {
+	User_t(std::string name, std::string email, std::string password, json metadata = nullptr)
+	{
 		this->name = name;
 		this->email = email;
 		this->password = password;
@@ -35,8 +35,10 @@ public:
 	}
 
 	// Constructor with json for user_t
-	User_t(json data) {
-		if (!data["name"].is_string() || !data["email"].is_string() || !data["password"].is_string() || !data["highscore"].is_object() || !data["highscore"]["easy"].is_number() || !data["highscore"]["medium"].is_number() || !data["highscore"]["hard"].is_number()) {
+	User_t(json data)
+	{
+		if (!data["name"].is_string() || !data["email"].is_string() || !data["password"].is_string() || !data["highscore"].is_object() || !data["highscore"]["easy"].is_number() || !data["highscore"]["medium"].is_number() || !data["highscore"]["hard"].is_number())
+		{
 			std::cout << "[UserData_Storage][ERROR] Syntax error in jsonpass for User_t" << std::endl;
 			return;
 		}
@@ -50,7 +52,8 @@ public:
 	}
 
 	// Returns data in json form.
-	json jsondump() {
+	json jsondump()
+	{
 		json user_json;
 		user_json["name"] = name;
 		user_json["email"] = email;
@@ -64,7 +67,8 @@ public:
 	}
 
 	// Returns data in json form. Includes password.
-	json jsondumpSecure() {
+	json jsondumpSecure()
+	{
 		json user_json;
 		user_json["name"] = name;
 		user_json["email"] = email;
@@ -84,43 +88,55 @@ public:
 	200 = sucess
 	401 = password incorrect
 	404 = email incorrect*/
-	int trySignin(std::string email, std::string password) {
-		if (this->email == email) {
-			if (this->password == password) {
+	int trySignin(std::string email, std::string password)
+	{
+		if (this->email == email)
+		{
+			if (this->password == password)
+			{
 				return 200;
 			}
-			else {
+			else
+			{
 				return 401;
 			}
 		}
-		else {
+		else
+		{
 			return 404;
 		}
 	}
 
 	// Returns email.
-	std::string getEmail() {
+	std::string getEmail()
+	{
 		return email;
 	}
 
 	// Returns name.
-	std::string getName() {
+	std::string getName()
+	{
 		return name;
 	}
 
 	/*Returns highscore of given difficulty.
 	difficulty = easy/medium/hard*/
-	int getHighscore(std::string difficulty) {
-		if (difficulty == "easy") {
+	int getHighscore(std::string difficulty)
+	{
+		if (difficulty == "easy")
+		{
 			return score_easy;
 		}
-		else if (difficulty == "medium") {
+		else if (difficulty == "medium")
+		{
 			return score_medium;
 		}
-		else if (difficulty == "hard") {
+		else if (difficulty == "hard")
+		{
 			return score_hard;
 		}
-		else {
+		else
+		{
 			std::cout << "[UserData_Storage][WARN] An error occurred trying to get user score. Unknown difficulty: '" << difficulty << "'" << std::endl;
 			return NULL;
 		}
@@ -131,13 +147,14 @@ public:
 	Returns:
 	200 = sucess
 	400 = invalid*/
-	int setName(std::string name) {
-		if (name != "") {
+	int setName(std::string name)
+	{
+		if (name != "")
+		{
 			this->name = name;
 			return 200;
 		}
 		return 400;
-		
 	}
 
 	/*
@@ -146,20 +163,25 @@ public:
 	Returns:
 	200 = sucess
 	400 = invalid difficulty*/
-	int updateScore(int score, std::string difficulty) {
-		if (difficulty == "easy") {
+	int updateScore(int score, std::string difficulty)
+	{
+		if (difficulty == "easy")
+		{
 			score_easy = (score_easy < score ? score : score_easy);
 			return 200;
 		}
-		else if (difficulty == "medium") {
+		else if (difficulty == "medium")
+		{
 			score_medium = (score_medium < score ? score : score_medium);
 			return 200;
 		}
-		else if (difficulty == "hard") {
+		else if (difficulty == "hard")
+		{
 			score_hard = (score_hard < score ? score : score_hard);
 			return 200;
 		}
-		else {
+		else
+		{
 			std::cout << "[UserData_Storage][WARN] An error occurred trying to set user score. Unknown difficulty: '" << difficulty << "'" << std::endl;
 			return 400;
 		}
@@ -170,8 +192,10 @@ public:
 	Returns:
 	200 = sucess
 	401 = old password incorrect*/
-	int updatePassword(std::string oldPassword, std::string newPassword) {
-		if (password != oldPassword) {
+	int updatePassword(std::string oldPassword, std::string newPassword)
+	{
+		if (password != oldPassword)
+		{
 			return 401;
 		}
 		password = newPassword;
