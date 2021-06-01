@@ -1,5 +1,5 @@
 #pragma once
-#define ASIO_STANDALONE
+/*#define ASIO_STANDALONE*/
 
 #include <websocketpp/config/asio_no_tls.hpp>
 #include <websocketpp/server.hpp>
@@ -11,15 +11,17 @@
 #include <thread>
 
 #include "json.hpp"
-#include "Message.hpp"
+#include "WebSocket_Message.hpp"
 
 using json = nlohmann::json;
 
 typedef websocketpp::server<websocketpp::config::asio> server;
 
-class WebSocketServer_IF {
+class WebSocketServer_IF
+{
 public:
-	WebSocketServer_IF() {
+	WebSocketServer_IF()
+	{
 		// Find config file
 		readConfigfile();
 
@@ -42,7 +44,8 @@ public:
 		m_endpoint.set_http_handler(bind(&WebSocketServer_IF::on_http, this, websocketpp::lib::placeholders::_1));
 	}
 
-	~WebSocketServer_IF() {
+	~WebSocketServer_IF()
+	{
 		std::cout << "[WebSocketServer_IF][INFO] Stopping server." << std::endl;
 		m_endpoint.stop();
 		endpointThread.join();
@@ -53,7 +56,8 @@ public:
 		Register a function to be called when a message is recieved.
 		Callback function should be of type void(Message*).
 	*/
-	void add_onMessage_Handler(std::function<void(Message*)> cb) {
+	void add_onMessage_Handler(std::function<void(WebSocket_Message *)> cb)
+	{
 		onMessage = cb;
 	}
 
@@ -61,7 +65,8 @@ public:
 		Register a function to be called when a client connects.
 		Callback function should be of type void(Client*).
 	*/
-	void add_onConnected_Handler(std::function<void(Client*)> cb) {
+	void add_onConnected_Handler(std::function<void(Client *)> cb)
+	{
 		onConnected = cb;
 	}
 
@@ -69,17 +74,20 @@ public:
 		Register a function to be called when a client disconnects.
 		Callback function should be of type void(Client*).
 	*/
-	void add_onDisconnected_Handler(std::function<void(Client*)> cb) {
+	void add_onDisconnected_Handler(std::function<void(Client *)> cb)
+	{
 		onDisconnected = cb;
 	}
 
 	// Starts the server. Async.
-	void run() {
+	void run()
+	{
 		endpointThread = std::thread(&WebSocketServer_IF::_run, this);
 	}
 
 	// Returns a pointer to a vector of all connected clients.
-	std::vector<Client>* getClients() {
+	std::vector<Client> *getClients()
+	{
 		return &connections;
 	}
 
@@ -87,10 +95,13 @@ public:
 		Returns a vector of Client pointes for all clients of a certan type.
 		Returns an empty vector if no clients of the given type is connected.
 	*/
-	std::vector<Client*> getConnectionsOfType(Client::connectionType type) {
-		std::vector<Client*> res;
-		for (auto& con : connections) {
-			if (con.getType() == type) {
+	std::vector<Client *> getConnectionsOfType(Client::connectionType type)
+	{
+		std::vector<Client *> res;
+		for (auto &con : connections)
+		{
+			if (con.getType() == type)
+			{
 				res.push_back(&con);
 			}
 		}
@@ -98,8 +109,10 @@ public:
 	}
 
 	// Changes the connectiontype of a connection and transmits a message if needed
-	void redefineConnection(Client* con, Client::connectionType newType, bool broadcastUpdate = true) {
-		if (con->getType() != newType) {
+	void redefineConnection(Client *con, Client::connectionType newType, bool broadcastUpdate = true)
+	{
+		if (con->getType() != newType)
+		{
 			con->setType(newType);
 
 			json informMessage;
@@ -129,43 +142,48 @@ public:
 				break;
 			}
 
-			if (!informMessage["type"].is_null()) {
+			if (!informMessage["type"].is_null())
+			{
 				con->send(informMessage);
 			}
-			if (broadcastUpdate && (newType == Client::connectionType::pistol || newType == Client::connectionType::primaryBrowser)) {
+			if (broadcastUpdate && (newType == Client::connectionType::pistol || newType == Client::connectionType::primaryBrowser))
+			{
 				broadcastConnections();
 			}
 		}
 	}
 
 	// Sends a list of the connected pistols to the primary browser
-	void broadcastConnections() {
+	void broadcastConnections()
+	{
 		auto res = getConnectionsOfType(Client::connectionType::primaryBrowser);
-		if (res.size() > 0) {
+		if (res.size() > 0)
+		{
 			json message;
 
 			message["type"] = "Pistollist";
 			message["pistols"] = json::array();
-			for (auto& con : getConnectionsOfType(Client::connectionType::pistol)) {
+			for (auto &con : getConnectionsOfType(Client::connectionType::pistol))
+			{
 				message["pistols"].push_back(con->getMetadata());
 			}
 			res[0]->send(message);
 		}
-		else {
+		else
+		{
 			std::cout << "[WebSocketServer_IF][WARN] Canceled broadcast of information. No primary browser was found." << std::endl;
 		}
 	}
 
 private:
 	// On message callback funton.
-	std::function<void(Message*)> onMessage = nullptr;
+	std::function<void(WebSocket_Message *)> onMessage = nullptr;
 
 	// On new connection callback function.
-	std::function<void(Client*)> onConnected = nullptr;
+	std::function<void(Client *)> onConnected = nullptr;
 
 	// On connection ended callback function.
-	std::function<void(Client*)> onDisconnected = nullptr;
-
+	std::function<void(Client *)> onDisconnected = nullptr;
 
 	// The actual server
 	server m_endpoint;
@@ -174,7 +192,7 @@ private:
 	std::thread endpointThread;
 
 	// Port
-	int port = 3000;
+	int port = 80;
 
 	// Document root of HTTP requests
 	std::string httpfilelocation = "httpcontent/";
@@ -184,7 +202,8 @@ private:
 
 	// Server start. Runs in thread
 
-	void _run() {
+	void _run()
+	{
 		// Retrying to allocate the port if it fails
 		bool portSucess = false;
 		while (portSucess == false)
@@ -192,12 +211,12 @@ private:
 			try
 			{
 				// Listen on port 3000
-				m_endpoint.listen(asio::ip::tcp::v4(), port);
+				m_endpoint.listen(boost::asio::ip::tcp::v4(), port);
 				portSucess = true;
 			}
-			catch (const std::exception& ex)
+			catch (const std::exception &ex)
 			{
-				std::cout << "[WebSocketServer_IF][ERROR] Failed to allocate port 3000. Retry will commence in 10 seconds" << std::endl;
+				std::cout << "[WebSocketServer_IF][ERROR] Failed to allocate port " << port << ". Retry will commence in 10 seconds" << std::endl;
 				std::cout << "[WebSocketServer_IF][ERROR] " << ex.what() << std::endl;
 				std::this_thread::sleep_for((std::chrono::milliseconds)10000);
 			}
@@ -207,14 +226,15 @@ private:
 		m_endpoint.start_accept();
 
 		std::cout << "[WebSocketServer_IF][INFO] Starting server on port " << port << "." << std::endl
-			<< std::endl;
+				  << std::endl;
 
 		// Start the Asio io_service run loop
 		m_endpoint.run();
 	}
 
 	// Message handler
-	void on_message(websocketpp::connection_hdl hdl, server::message_ptr msg) {
+	void on_message(websocketpp::connection_hdl hdl, server::message_ptr msg)
+	{
 
 		try
 		{
@@ -224,8 +244,8 @@ private:
 			std::cout << "[WebSocketServer_IF][INFO] Message recieved from: " << connectionPointer->get_remote_endpoint() << " | saying: " << msg->get_payload() << std::endl;
 
 			// Find connection from connectionlist
-			Client* con = nullptr;
-			for (auto& _con : connections)
+			Client *con = nullptr;
+			for (auto &_con : connections)
 			{
 				if (_con.is(connectionPointer))
 				{
@@ -245,40 +265,43 @@ private:
 			{
 				input = json::parse(msg->get_payload());
 			}
-			catch (const std::exception& ex)
+			catch (const std::exception &ex)
 			{
 				std::cout << "[WebSocketServer_IF][ERROR] Could not pass incomming message as JSON. Terminating handle. Errordetails: " << ex.what() << std::endl;
 				std::cout << std::endl;
 				return;
 			}
 
-			Message message(input, con);
-			if (onMessage != nullptr) {
+			WebSocket_Message message(input, con);
+			if (onMessage != nullptr)
+			{
 				try
 				{
 					onMessage(&message);
 				}
-				catch (const std::exception& ex)
+				catch (const std::exception &ex)
 				{
 					std::cout << "[WebSocketServer_IF][ERROR] Fatal error in message handle callback. Terminating handle. Errordetails: " << ex.what() << std::endl;
 					std::cout << std::endl;
 					return;
 				}
-
 			}
-			else {
+			else
+			{
 				std::cout << "[WebSocketServer_IF][WARN] No handler for event 'onMessage' found." << std::endl;
 				message.addToResponse("{\"status\": 501}"_json);
 			}
 
-			if (message.is_requestingReply()) {
-				if (!message.is_replyUpdated()) {
+			if (message.is_requestingReply())
+			{
+				if (!message.is_replyUpdated())
+				{
 					message.addToResponse("{\"status\": 204}"_json);
 				}
 				message.getClient()->send(message.getResponseContent());
 			}
 		}
-		catch (const std::exception& ex)
+		catch (const std::exception &ex)
 		{
 			std::cout << "[WebSocketServer_IF][ERROR] Fatal error on incomming message. Terminating handle. Errordetails: " << ex.what() << std::endl;
 			std::cout << std::endl;
@@ -288,7 +311,8 @@ private:
 	}
 
 	// Open handler
-	void on_open(websocketpp::connection_hdl hdl) {
+	void on_open(websocketpp::connection_hdl hdl)
+	{
 		// Translating connection-handle to connection-pointer which is much more functional
 		std::shared_ptr<websocketpp::connection<websocketpp::config::asio>> connectionPointer = m_endpoint.get_con_from_hdl(hdl);
 
@@ -298,12 +322,14 @@ private:
 		// Adds the pointer to a vector for later use
 		json metadata;
 		metadata["ID"] = connectionPointer->get_remote_endpoint().substr(connectionPointer->get_remote_endpoint().find_last_of(":") + 1);
-		connections.push_back({ connectionPointer, time(0), metadata });
+		connections.push_back({connectionPointer, time(0), metadata});
 
-		if (onConnected != nullptr) {
+		if (onConnected != nullptr)
+		{
 			onConnected(&connections[connections.size() - 1]);
 		}
-		else {
+		else
+		{
 			std::cout << "[WebSocketServer_IF][WARN] No handler for event 'onConnected' found." << std::endl;
 		}
 
@@ -311,7 +337,8 @@ private:
 	}
 
 	// Close handler
-	void on_close(websocketpp::connection_hdl hdl) {
+	void on_close(websocketpp::connection_hdl hdl)
+	{
 		// Connectionpointer for disconnected connection
 		std::shared_ptr<websocketpp::connection<websocketpp::config::asio>> pointer = m_endpoint.get_con_from_hdl(hdl);
 
@@ -321,20 +348,25 @@ private:
 			if ((*it).is(pointer))
 			{
 				std::cout << "[WebSocketServer_IF][INFO] Client of type: " << it->getType() << " disconnected." << std::endl;
-				if (onDisconnected != nullptr) {
+				if (onDisconnected != nullptr)
+				{
 					onDisconnected(&(*it));
 				}
-				else {
+				else
+				{
 					std::cout << "[WebSocketServer_IF][WARN] No handler for event 'onDisconnected' found." << std::endl;
 				}
 
-				if ((*it).getType() == Client::connectionType::primaryBrowser) {
+				if ((*it).getType() == Client::connectionType::primaryBrowser)
+				{
 					std::cout << "[WebSocketServer_IF][INFO] Primary browser disconnected" << std::endl;
 					auto res = getConnectionsOfType(Client::connectionType::dormantBrowser);
-					if (res.size() > 0) {
+					if (res.size() > 0)
+					{
 						redefineConnection(res[0], Client::connectionType::primaryBrowser);
 					}
-					else {
+					else
+					{
 						std::cout << "[WebSocketServer_IF][WARN] No new primary browser was found" << std::endl;
 					}
 				}
@@ -348,7 +380,8 @@ private:
 	}
 
 	// Handler for HTTP requests
-	void on_http(websocketpp::connection_hdl hdl) {
+	void on_http(websocketpp::connection_hdl hdl)
+	{
 		// Upgrade our connection handle to a full connection_ptr
 		server::connection_ptr con = m_endpoint.get_con_from_hdl(hdl);
 
@@ -357,20 +390,24 @@ private:
 		std::string response;
 		std::string filePath = filename;
 
-		if (filename == "/") {
+		if (filename == "/")
+		{
 			filePath = httpfilelocation + "index.html";
 		}
-		else {
+		else
+		{
 			filePath = httpfilelocation + filename.substr(1);
 		}
 
 		std::cout << "[WebSocketServer_IF][INFO] HTTP request on content: '" << filename << "'." << std::endl;
 
 		file.open(filePath.c_str(), std::ios::in);
-		if (!file) {
+		if (!file)
+		{
 			filePath = httpfilelocation + "index.html";
 			file.open(filePath.c_str(), std::ios::in);
-			if (!file) {
+			if (!file)
+			{
 				return;
 			}
 		}
@@ -380,7 +417,7 @@ private:
 		file.seekg(0, std::ios::beg);
 
 		response.assign((std::istreambuf_iterator<char>(file)),
-			std::istreambuf_iterator<char>());
+						std::istreambuf_iterator<char>());
 
 		con->set_body(response);
 		con->set_status(websocketpp::http::status_code::ok);
@@ -388,11 +425,14 @@ private:
 		std::cout << std::endl;
 	}
 
-	void readConfigfile() {
-		try {
+	void readConfigfile()
+	{
+		try
+		{
 			std::ifstream configStream("config.json");
 			json config;
-			if (configStream.is_open()) {
+			if (configStream.is_open())
+			{
 				std::cout << "[WebSocketServer_IF][INFO] Configurationfile found." << std::endl;
 				configStream >> config;
 				configStream.close();
@@ -421,9 +461,7 @@ private:
 						std::cout << "[WebSocketServer_IF][WARN] Syntaxerror in configurationfile" << std::endl;
 					}
 
-
 					// Add more config here.
-
 
 					std::cout << "[WebSocketServer_IF][INFO] End of configurationfile." << std::endl;
 				}
@@ -437,7 +475,7 @@ private:
 				std::cout << "[WebSocketServer_IF][INFO] Configurationfile was not found." << std::endl;
 			}
 		}
-		catch (const std::exception& ex)
+		catch (const std::exception &ex)
 		{
 			std::cout << "[WebSocketServer_IF][WARN] An error occurred while reading configurationfile." << std::endl;
 			std::cout << "[WebSocketServer_IF][WARN] " << ex.what() << std::endl;

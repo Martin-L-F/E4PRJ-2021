@@ -1,8 +1,8 @@
-SOURCES=main.cpp RailSystem_IF.cpp Target_IF.cpp UART/Rx_data.cpp UART/ScopedLocker.cpp UART/UART.cpp
+SOURCES=main.cpp
 OBJECTS=$(addprefix  $(BUILD_DIR), $(SOURCES:.cpp=.o))
 DEPS=$(SOURCES:.cpp=.d)
-EXE=ControlUnitApp
-CXXFLAGS=-I. -pthread -lboost_system -lcrypto -lssl
+EXE=PistolApp
+CXXFLAGS=-I. -pthread -lwiringPi -lboost_system -lcrypto -lssl
 
 # Making for host
 # > make ARCH=host
@@ -15,7 +15,7 @@ endif
 # Making for target
 # > make ARCH=target
 ifeq (${ARCH},target)
-CXX=arm-rpizw-g++
+#CXX=arm-rpizw-g++
 BUILD_DIR=build/target/
 EXE_DIR=bin/target/
 endif

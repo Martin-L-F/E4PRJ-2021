@@ -17,7 +17,7 @@ createApp(App)
   .use(router)
   .mount("#app");
 
-addConnectedHandler((isPrimary) => {
+addConnectedHandler(isPrimary => {
   store.commit("ws_connected", isPrimary);
   router.push("/");
 });
@@ -28,21 +28,24 @@ addDisconnectedHandler(() => {
 });
 
 addUsersUpdated(users => {
-  store.commit('updateUsers', users);
+  store.commit("updateUsers", users);
 });
 
 addPistolsUpdated(pistols => {
-  store.commit('updatePistols', pistols);
+  store.commit("updatePistols", pistols);
 });
 
 addShowStatsHandler(() => {
   router.push("/showstats");
 });
 
-if (localStorage.getItem('ControlUnit-IP') == null) {
-  localStorage.setItem('ControlUnit-IP', 'localhost');
-}
+console.log(router);
+console.log(window.location.hostname);
 
-connect('ws://' + localStorage.getItem('ControlUnit-IP') + ':3000');
+if (localStorage.getItem("ControlUnit-IP") == null) {
+  connect("ws://" + window.location.hostname + ":80");
+} else {
+  connect("ws://" + localStorage.getItem("ControlUnit-IP"));
+}
 
 initiateSpeech();

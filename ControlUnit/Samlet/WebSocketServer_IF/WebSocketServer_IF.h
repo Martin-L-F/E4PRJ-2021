@@ -1,6 +1,5 @@
 #pragma once
-
-#define ASIO_STANDALONE
+/*#define ASIO_STANDALONE*/
 
 #include <websocketpp/config/asio_no_tls.hpp>
 #include <websocketpp/server.hpp>
@@ -12,7 +11,7 @@
 #include <thread>
 
 #include "json.hpp"
-#include "Message.hpp"
+#include "WebSocket_Message.hpp"
 
 using json = nlohmann::json;
 
@@ -57,7 +56,7 @@ public:
 		Register a function to be called when a message is recieved.
 		Callback function should be of type void(Message*).
 	*/
-	void add_onMessage_Handler(std::function<void(Message *)> cb)
+	void add_onMessage_Handler(std::function<void(WebSocket_Message *)> cb)
 	{
 		onMessage = cb;
 	}
@@ -178,7 +177,7 @@ public:
 
 private:
 	// On message callback funton.
-	std::function<void(Message *)> onMessage = nullptr;
+	std::function<void(WebSocket_Message *)> onMessage = nullptr;
 
 	// On new connection callback function.
 	std::function<void(Client *)> onConnected = nullptr;
@@ -193,7 +192,7 @@ private:
 	std::thread endpointThread;
 
 	// Port
-	int port = 3000;
+	int port = 80;
 
 	// Document root of HTTP requests
 	std::string httpfilelocation = "httpcontent/";
@@ -212,12 +211,12 @@ private:
 			try
 			{
 				// Listen on port 3000
-				m_endpoint.listen(asio::ip::tcp::v4(), port);
+				m_endpoint.listen(boost::asio::ip::tcp::v4(), port);
 				portSucess = true;
 			}
 			catch (const std::exception &ex)
 			{
-				std::cout << "[WebSocketServer_IF][ERROR] Failed to allocate port 3000. Retry will commence in 10 seconds" << std::endl;
+				std::cout << "[WebSocketServer_IF][ERROR] Failed to allocate port " << port << ". Retry will commence in 10 seconds" << std::endl;
 				std::cout << "[WebSocketServer_IF][ERROR] " << ex.what() << std::endl;
 				std::this_thread::sleep_for((std::chrono::milliseconds)10000);
 			}
@@ -273,7 +272,7 @@ private:
 				return;
 			}
 
-			Message message(input, con);
+			WebSocket_Message message(input, con);
 			if (onMessage != nullptr)
 			{
 				try
