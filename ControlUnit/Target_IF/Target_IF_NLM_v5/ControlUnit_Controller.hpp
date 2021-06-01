@@ -21,16 +21,24 @@ public:
     ControlUnit_Controller()
     {
         TargetObj.addCallback(bind(&ControlUnit_Controller::shotDetected, this, placeholders::_1));
-        //RailSystemObj.addCallback(bind(&ControlUnit_Controller::CalibrateComplete, this));
+        RailSystemObj.addCallback(bind(&ControlUnit_Controller::CalibrateComplete, this));
 
     }
     Target_IF TargetObj;
-    //RailSystem_IF RailSystemObj;
+    RailSystem_IF RailSystemObj;
 private:
     UserData_Storage UserDataStorage_;
     void CalibrateComplete()
     {
         cout << "Calibrate complete" << endl;
+        usleep(1000);
+        RailSystemObj.startMoving(1);
+        cout << "Start moving" << endl;
+
+        sleep(3);
+
+        RailSystemObj.stopMoving();
+        cout << "Stop moving" << endl;
     }
     void shotDetected(int player)
     {

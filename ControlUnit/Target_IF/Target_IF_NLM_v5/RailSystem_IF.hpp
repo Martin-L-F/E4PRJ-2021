@@ -10,7 +10,7 @@ using namespace std;
 using namespace chrono;
 
 #define BUF_SIZE 32
-#define RailSystem_IF_PSOC_ID "0" //PSOC USB-ID number as string: KitProg_"this number"-if02. Put "0" if there is none
+#define RailSystem_IF_PSOC_ID "1106040A00228400"//"040F093201324400" //PSOC USB-ID number as string: KitProg_"this number"-if02. Put "0" if there is none
 
 class RailSystem_IF
 {
@@ -23,6 +23,7 @@ public:
     void UARTDispatcher(unsigned id, Message* msg);
     int CalibrateDone(Message* user);                   //Handler
     void addCallback(function<void()> cb);
+    UART* getUARTobj(); //test
 private:
     UART UARTobj_;
     function<void()> callbackControllerCalibrateComplete_;

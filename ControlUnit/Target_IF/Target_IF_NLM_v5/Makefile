@@ -1,9 +1,9 @@
 # define the command that we use for compilation
-SOURCES = testTarget.cpp Target_IF.cpp RailSystem_IF.cpp UART/UART.cpp UART/MsgQueue.cpp UART/ScopedLocker.cpp UART/Rx_data.cpp
+SOURCES = testRailSystem.cpp Target_IF.cpp RailSystem_IF.cpp UART/UART.cpp UART/MsgQueue.cpp UART/ScopedLocker.cpp UART/Rx_data.cpp
 CXXFLAGS= -I. -pthread -Wall
 EXE=test_exe
 MKDIR=@mkdir -p $(@D)
-ARCH=target
+ARCH=host
 
 #Making for host
 #> make ARCH=host

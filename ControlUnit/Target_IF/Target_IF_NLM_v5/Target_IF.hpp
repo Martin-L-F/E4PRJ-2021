@@ -10,7 +10,7 @@ using namespace std;
 using namespace chrono;
 
 #define BUF_SIZE 32
-#define Target_IF_PSOC_ID "0C0E040A00228400" //PSOC USB-ID number as string: KitProg_"this number"-if02. Put "0" if there is none
+#define Target_IF_PSOC_ID "0"//"0C0E040A00228400" //PSOC USB-ID number as string: KitProg_"this number"-if02. Put "0" if there is none
 
 
 class Target_IF

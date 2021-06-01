@@ -30,7 +30,7 @@ void RailSystem_IF::resetPosition()
 
     msg[0] = 0xD1;
     msg[1] = 0xEF;
-
+    
     UARTobj_.writeMsg(msg, 2);
 }
 
@@ -47,7 +47,7 @@ void RailSystem_IF::stopMoving()
 void RailSystem_IF::UARTDispatcher(unsigned id, Message* msg)
 {
     if(debug_UART)
-        printf("Target Dispatcher id: %x\n", id);
+        printf("RailSystem Dispatcher id: %x\n", id);
 
     switch(id) {
     case 0xD2:
@@ -71,4 +71,9 @@ int RailSystem_IF::CalibrateDone(Message* user) //Handler in TargetIF_Dispatcher
 
 void RailSystem_IF::addCallback(function<void()> cb) {
     callbackControllerCalibrateComplete_ = cb;
+}
+
+UART* RailSystem_IF::getUARTobj()
+{
+    return &UARTobj_;
 }

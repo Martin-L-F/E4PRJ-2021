@@ -1,27 +1,23 @@
-// #include "Target_IF.hpp"
-// #include "UART/MsgQueue.hpp"
-// #include "ControlUnit_Controller.hpp"
+#include "Target_IF.hpp"
+#include "UART/MsgQueue.hpp"
+#include "ControlUnit_Controller.hpp"
 
-// #include <pthread.h>
-// #include <iostream>
-// using namespace std;
+#include <pthread.h>
+#include <iostream>
+using namespace std;
 
 
-// int main()
-// {    
-//     ControlUnit_Controller controlObj;
+int main()
+{    
+    ControlUnit_Controller controlObj;
     
 
-//     //Test
-//     printf("Program started\n");
+    //Test
+    printf("Program started\n");
 
-//     controlObj.TargetObj.startDetection(2);
-//     printf("Start detection\n");
-//     sleep(10);
-//     controlObj.TargetObj.stopDetection();
-//     printf("Stop detection\n");
-    
-//     sleep(2);
+    controlObj.RailSystemObj.resetPosition();
+    printf("Start Calibration\n");
+    controlObj.RailSystemObj.getUARTobj()->getThreadUARTREceive()->join();
 
-//     return 0;
-// }
+    return 0;
+}

@@ -16,7 +16,7 @@ using namespace chrono;
 #include "MsgQueue.hpp"
 #include "Rx_data.hpp"
 
-#define debug_UART 0
+#define debug_UART 1
 
 class UART
 {
@@ -29,10 +29,12 @@ public:
 
     void funcUARTReceive();
     void funcUARTDispatcher();
+    thread* getThreadUARTREceive(); //test
 private:
     int fd_;
     function<void(unsigned, Message*)> callbackDispatcher_;
     thread ThreadUARTReceive;
     thread ThreadUARTDispatcher;
     MsgQueue msgQueueObj;
+    string PSoC_ID_; //Test
 };
