@@ -43,7 +43,7 @@ private:
 	}
 	void shotDetected(int player)
 	{
-		updateScore(player, 5);
+		updateScore(player - 1, 5);
 	}
 
 	// Transmits all data for signed in users to the primary browser.
@@ -321,7 +321,6 @@ private:
 					}
 
 					currentGameDifficulty = message->getContent()["difficulty"];
-					armAllPistols(currentGameDifficulty);
 					message->addToResponse("{\"status\": 200}"_json);
 				}
 				else
@@ -343,6 +342,13 @@ private:
 				return;
 			gameStartetAt = time(0);
 			TargetObj.startDetection(signedInUsers.size());
+			armAllPistols(currentGameDifficulty);
+			for (auto &user : signedInUsers)
+			{
+				user.isWinner = false;
+				user.curentScore = 0;
+			}
+			broadcastSignedInUsers();
 			if (currentGameDifficulty == "easy")
 			{
 				RailSystemObj.startMoving(1);
@@ -453,6 +459,7 @@ private:
 				user.user->updateScore(abs(difftime(time(0), gameStartetAt)) * -1, currentGameDifficulty);
 			}
 			user.isWinner = false;
+			user.curentScore = 0;
 		}
 		currentGameDifficulty = "";
 	}
@@ -466,10 +473,11 @@ private:
 			return;
 		}
 		signedInUsers[userIndex].curentScore += pointsToAdd;
-
+		std::cout << "[ControlUnit_Controller][INFO] The user '" << signedInUsers[userIndex].user->getEmail() << "' now has " << signedInUsers[userIndex].curentScore << " points." << std::endl;
 		if (signedInUsers[userIndex].curentScore >= maxPoints)
 		{
 			signedInUsers[userIndex].isWinner = true;
+			std::cout << "[ControlUnit_Controller][INFO] The user '" << signedInUsers[userIndex].user->getEmail() << "' won the game." << std::endl;
 			broadcastSignedInUsers();
 			gameIsOver();
 		}

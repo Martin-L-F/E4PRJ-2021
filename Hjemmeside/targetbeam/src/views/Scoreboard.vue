@@ -26,8 +26,8 @@ export default {
       var localUsers = this.users;
 
       return localUsers.sort((a, b) => {
-        if (a.curentScore < b.curentScore) return -1;
-        if (a.curentScore > b.curentScore) return 1;
+        if (a.curentScore > b.curentScore) return -1;
+        if (a.curentScore < b.curentScore) return 1;
         return 0;
       });
     }

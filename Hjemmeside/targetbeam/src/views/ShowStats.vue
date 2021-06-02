@@ -6,7 +6,7 @@
         class="box userScoreBoard"
         v-for="user in usersSorted"
         :key="user.email"
-        :style="'--i' + 20"
+        :style="'--i:' + user.curentScore"
       >
       <h3>{{ user.name }}</h3>
       <h1>{{ user.curentScore }}</h1>
@@ -26,8 +26,8 @@ export default {
       var localUsers = this.users;
 
       return localUsers.sort((a, b) => {
-        if (a.curentScore < b.curentScore) return -1;
-        if (a.curentScore > b.curentScore) return 1;
+        if (a.curentScore > b.curentScore) return -1;
+        if (a.curentScore < b.curentScore) return 1;
         return 0;
       });
     }
