@@ -13,7 +13,7 @@ public:
     {
         if (_callback != nullptr)
         {
-            std::cout << "[Powersave_timeout][WARN] Overriding callback for: Fire" << std::endl;
+            std::cout << "[Powersave_timeout][WARN] Overriding callback for: Timeout" << std::endl;
         }
         _callback = callback;
     }

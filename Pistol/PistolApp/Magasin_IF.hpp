@@ -24,10 +24,10 @@ public:
 
     void setMag(int difficulty);
 
+    void fillMag();
+
 private:
     void trigger(void);
-
-    void fillMag();
 
     std::thread _interuptThread;
     std::function<void()> _magSwitch = nullptr;

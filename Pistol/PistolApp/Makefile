@@ -1,8 +1,8 @@
-SOURCES=main.cpp Trigger_IF.cpp Magasin_IF.cpp Powersave_timeout_IF.cpp
+SOURCES=main.cpp Trigger_IF.cpp Magasin_IF.cpp Powersave_timeout_IF.cpp Rumble_IF.cpp Speaker_IF.cpp Laser_IF.cpp
 OBJECTS=$(addprefix  $(BUILD_DIR), $(SOURCES:.cpp=.o))
 DEPS=$(SOURCES:.cpp=.d)
 EXE=PistolApp
-CXXFLAGS=-I. -lwiringPi
+CXXFLAGS=-I. -lwiringPi -lboost_system -lcrypto -lssl -lpthread
 
 # Making for host
 # > make ARCH=host

@@ -1,14 +1,17 @@
-#include <stdio.h>
 #include "Rumble_IF.hpp"
-
-Rumble_IF::Rumble_IF() {};
-Rumble_IF::~Rumble_IF() {};
 
 void Rumble_IF::startRumble()
 {
-	FILE* fp;
+	try
+	{
+		FILE *fp;
 
-	fp = fopen(_devPath, "w");
-	fputc('1', fp);
-	fclose(fp);
+		fp = fopen("/dev/RUMBLE", "w");
+		fputc('1', fp);
+		fclose(fp);
+	}
+	catch (const std::exception &ex)
+	{
+		std::cout << "[Rumble_IF][ERROR] Could not write to file. Details: " << ex.what() << "." << std::endl;
+	}
 }
