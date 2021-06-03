@@ -46,14 +46,25 @@ static int rumble_motor_write(struct file *file, const char __user *buff,
 {
 	int err;
 	unsigned int* sleep_time = kmalloc(sizeof(unsigned int), GFP_KERNEL);
-	char msg[32];
+	char msg[64];
 	static struct task_struct *stop_thread;
 
 	/* Get new value from userspace */
-	err = kstrtouint_from_user(msg, len, 10, sleep_time);
+	err = copy_from_user(msg, buff, len);
 	if (err < 0)
 	{
 		printk(KERN_ERR "RUMBLE: Error copying from user.\n");
+		goto from_user_err;
+	}
+
+	/* Ensure proper termination of string */
+	msg[len] = '\0';
+
+	/* Parse input to unsigned int */
+	err = kstrtouint(msg, 10, sleep_time);
+	if (err < 0)
+	{
+		printk(KERN_ERR "RUMBLE: Error parsing input.\n");
 		goto from_user_err;
 	}
 
