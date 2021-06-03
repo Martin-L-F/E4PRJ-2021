@@ -2,7 +2,6 @@ import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
-import { initiateSpeech } from "./voice.js";
 import {
   connect,
   addConnectedHandler,
@@ -47,5 +46,3 @@ if (localStorage.getItem("ControlUnit-IP") == null) {
 } else {
   connect("ws://" + localStorage.getItem("ControlUnit-IP"));
 }
-
-initiateSpeech();

@@ -8,8 +8,8 @@
         :key="user.email"
         :style="'--i:' + user.curentScore"
       >
-      <h3>{{ user.name }}</h3>
-      <h1>{{ user.curentScore }}</h1>
+        <h3>{{ user.name }}</h3>
+        <h1>{{ user.curentScore }}</h1>
       </div>
     </div>
     <div class="btn" v-on:click="$router.push('/')">GO HOME</div>
@@ -48,10 +48,10 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    h3{
+    h3 {
     }
-    h1{
-        font-size: 3rem;
+    h1 {
+      font-size: 3rem;
     }
 
     position: relative;
@@ -78,9 +78,9 @@ export default {
     }
   }
 }
-.btn{
-    max-width: max-content;
-    margin-left: auto;
-    margin-right: auto;
+.btn {
+  max-width: max-content;
+  margin-left: auto;
+  margin-right: auto;
 }
 </style>
