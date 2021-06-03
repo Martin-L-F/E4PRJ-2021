@@ -8,7 +8,7 @@ ifeq ($(KERNELRELEASE),)
 # If KERNELDIR is not set by an environment variable 
 ifeq ($(KERNELDIR),)
 	# Assume the source tree is where the running kernel was built
-	KERNELDIR = /usr/src/rpi-5.4.y
+	KERNELDIR = /usr/src/rpi-5.10.32
 endif
 
 # If CCPREFIX is not set by an environment variable

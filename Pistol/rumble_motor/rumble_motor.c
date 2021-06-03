@@ -15,7 +15,6 @@
 #define NBR_MINORS 1
 
 #define GPIO_PIN 17
-#define RUMBLE_SLEEP_MS 1000
 
 
 
@@ -35,8 +34,10 @@ struct dev_data dev_data;
 
 int rumble_motor_stop_rumble_thread(void *pv)
 {
-	msleep(RUMBLE_SLEEP_MS);
+	unsigned int* sleep_time = (unsigned int*)pv;
+	msleep(*sleep_time);
 	gpio_set_value(GPIO_PIN, 0);
+	kfree(sleep_time);
 	return 0;
 }
 
@@ -44,7 +45,8 @@ static int rumble_motor_write(struct file *file, const char __user *buff,
 		size_t len, loff_t* offset)
 {
 	int err;
-	char msg[2];
+	unsigned int* sleep_time = kmalloc(sizeof(unsigned int), GFP_KERNEL);
+	char msg[64];
 	static struct task_struct *stop_thread;
 
 	/* Get new value from userspace */
@@ -52,21 +54,40 @@ static int rumble_motor_write(struct file *file, const char __user *buff,
 	if (err < 0)
 	{
 		printk(KERN_ERR "RUMBLE: Error copying from user.\n");
-		return err;
+		goto from_user_err;
 	}
 
-	if (msg[0] == '1')
+	/* Ensure proper termination of string */
+	msg[len] = '\0';
+
+	/* Parse input to unsigned int */
+	err = kstrtouint(msg, 10, sleep_time);
+	if (err < 0)
+	{
+		printk(KERN_ERR "RUMBLE: Error parsing input.\n");
+		goto from_user_err;
+	}
+
+	if (*sleep_time > 0)
 	{
 		/* Set GPIO high */
 		gpio_set_value(GPIO_PIN, 1);
 
 		/* Create stop thread */
-		stop_thread = kthread_run(rumble_motor_stop_rumble_thread, NULL, "RUMBLE stop thread");
+		stop_thread = kthread_run(rumble_motor_stop_rumble_thread, sleep_time, "RUMBLE stop thread");
 		if (!stop_thread)
 			printk(KERN_ALERT "RUMBLE: Couldn't create stop rumble thread.");
 	}
+	else
+	{
+		kfree(sleep_time);
+	}
 
 	return len;
+
+from_user_err:
+	kfree(sleep_time);
+	return err;
 }
 
 static struct file_operations rumble_motor_fops = {

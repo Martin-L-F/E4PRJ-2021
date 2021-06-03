@@ -51,3 +51,8 @@ tidy: $(SOURCES:.cpp=.tidy)
 	@echo "Tidying file '$<'"...
 	@clang-tidy $< -- $(CXXFLAGS)
 	@echo "" > $@
+
+clean:
+	rm -rf *.o *.d $(EXE)
+
+.PHONY: clean
