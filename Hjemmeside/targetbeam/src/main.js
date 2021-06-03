@@ -42,7 +42,8 @@ console.log(router);
 console.log(window.location.hostname);
 
 if (localStorage.getItem("ControlUnit-IP") == null) {
-  connect("ws://" + window.location.hostname + ":80");
+  //connect("ws://" + window.location.hostname + ":80");
+  connect("ws://" + "targetbeam.com" + ":80");
 } else {
   connect("ws://" + localStorage.getItem("ControlUnit-IP"));
 }
