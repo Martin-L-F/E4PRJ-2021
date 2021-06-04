@@ -441,6 +441,7 @@ private:
 		disarmAllPistols();
 
 		TargetObj.stopDetection();
+		RailSystemObj.stopMoving();
 
 		speaker.playSound("GameIsOver");
 

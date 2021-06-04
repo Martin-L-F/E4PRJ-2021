@@ -1,9 +1,9 @@
 {
     "WebSocketClient_IF": {
-        "uri": "ws://192.168.1.97:3000"
+        "uri": "ws://targetbeam.com"
     },
     "Pistol_Controller": {
         "frequency_b": 500,
-        "frequency_a": 200
+        "frequency_a": 300
     }
 }

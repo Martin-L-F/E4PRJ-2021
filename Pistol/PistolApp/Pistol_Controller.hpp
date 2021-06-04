@@ -29,7 +29,7 @@ public:
         powersave_timeout.addCallback((std::function<void()>)std::bind(&Pistol_Controller::goToPowersave, this));
         powersave_timeout.setDelay(50000);
 
-				rumble.setRumbleTime(200);
+		rumble.setRumbleTime(200);
 
         client.set_onMessage_handler(std::bind(&Pistol_Controller::onMessage, this, std::placeholders::_1));
         client.set_onConnected_handler(std::bind(&Pistol_Controller::onConnected, this));
